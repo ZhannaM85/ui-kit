@@ -205,6 +205,18 @@ npm run build
 
 The built library will be in the `dist/ui-kit` directory.
 
+### Sandbox (local preview)
+
+Run the sandbox app to preview components in the browser:
+
+```bash
+npm start
+```
+
+This builds the library, clears the Angular cache, and serves the sandbox at **http://localhost:4200**. The sandbox has a left sidebar listing components (with a filter) and a main area showing each component’s showcase.
+
+**Proxy:** API requests to `/api` are proxied to `http://localhost:3000` by default. Edit `proxy.conf.json` to change the `target` (e.g. to your backend URL).
+
 ### Running Tests
 
 ```bash
