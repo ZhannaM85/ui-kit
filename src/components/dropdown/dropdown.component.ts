@@ -1,5 +1,4 @@
 import { Component, EventEmitter, HostListener, Input, Output, OnChanges, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 export interface DropdownOption {
   label: string;
@@ -8,8 +7,7 @@ export interface DropdownOption {
 
 @Component({
   selector: 'lib-dropdown',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss']
 })

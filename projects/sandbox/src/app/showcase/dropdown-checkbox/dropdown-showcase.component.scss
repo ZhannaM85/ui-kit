@@ -1,0 +1,110 @@
+.showcase {
+  max-width: 800px;
+}
+
+.showcase-title {
+  font-size: 1.75rem;
+  margin: 0 0 0.5rem 0;
+  color: #111827;
+}
+
+.showcase-desc {
+  color: #6b7280;
+  margin: 0 0 2rem 0;
+}
+
+.showcase-section {
+  margin-bottom: 2rem;
+
+  h3 {
+    font-size: 1rem;
+    margin: 0 0 0.75rem 0;
+    color: #374151;
+    font-weight: 600;
+  }
+}
+
+.result {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.usage-block {
+  position: relative;
+}
+
+.usage-copy-wrap {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.usage-copied-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #059669;
+  animation: usage-copied-fade 0.2s ease-out;
+}
+
+@keyframes usage-copied-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.usage-copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #fff;
+  color: #6b7280;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: #f3f4f6;
+    color: #374151;
+    border-color: #d1d5db;
+  }
+
+  &.usage-copy--success {
+    border-color: #059669;
+    background: #ecfdf5;
+    color: #059669;
+  }
+}
+
+.usage-copy-icon {
+  flex-shrink: 0;
+}
+
+.usage-example {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  padding-right: 5rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #374151;
+
+  code {
+    font-family: ui-monospace, monospace;
+  }
+}
