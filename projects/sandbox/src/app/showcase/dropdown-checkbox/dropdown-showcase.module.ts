@@ -7,15 +7,15 @@ import { DropdownModule } from '@Zhannam85/ui-kit';
 import { DropdownShowcaseComponent } from './dropdown-showcase.component';
 
 const routes: Routes = [
-  { path: '', component: DropdownShowcaseComponent },
+    { path: '', component: DropdownShowcaseComponent },
 ];
 
 @NgModule({
-  declarations: [DropdownShowcaseComponent],
-  imports: [
-    CommonModule,
-    DropdownModule,
-    RouterModule.forChild(routes),
-  ],
+    declarations: [DropdownShowcaseComponent],
+    imports: [
+        CommonModule,
+        DropdownModule,
+        RouterModule.forChild(routes),
+    ],
 })
 export class DropdownShowcaseModule {}

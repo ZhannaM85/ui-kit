@@ -7,32 +7,33 @@ export interface NavItem {
 }
 
 const COMPONENTS: NavItem[] = [
-  { name: 'Button', path: 'button', label: 'Button' },
-  { name: 'Dropdown', path: 'dropdown', label: 'Dropdown' },
-  { name: 'Checkbox', path: 'checkbox', label: 'Checkbox' },
+    { name: 'Button', path: 'button', label: 'Button' },
+    { name: 'Dropdown', path: 'dropdown', label: 'Dropdown' },
+    { name: 'Checkbox', path: 'checkbox', label: 'Checkbox' },
 ];
 
 @Component({
-  selector: 'app-sidebar',
-  standalone: false,
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss'],
+    selector: 'app-sidebar',
+    standalone: false,
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-  filter = '';
-  items = COMPONENTS;
+    public filter = '';
 
-  get filteredItems(): NavItem[] {
-    const q = this.filter.trim().toLowerCase();
-    if (!q) return this.items;
-    return this.items.filter(
-      (item) =>
-        item.name.toLowerCase().includes(q) ||
+    public items = COMPONENTS;
+
+    public get filteredItems(): NavItem[] {
+        const q = this.filter.trim().toLowerCase();
+        if (!q) return this.items;
+        return this.items.filter(
+            (item) =>
+                item.name.toLowerCase().includes(q) ||
         item.label.toLowerCase().includes(q)
-    );
-  }
+        );
+    }
 
-  trackByPath(_index: number, item: NavItem): string {
-    return item.path;
-  }
+    public trackByPath(_index: number, item: NavItem): string {
+        return item.path;
+    }
 }

@@ -7,15 +7,15 @@ import { CheckboxModule } from '@Zhannam85/ui-kit';
 import { CheckboxShowcaseComponent } from './checkbox-showcase.component';
 
 const routes: Routes = [
-  { path: '', component: CheckboxShowcaseComponent },
+    { path: '', component: CheckboxShowcaseComponent },
 ];
 
 @NgModule({
-  declarations: [CheckboxShowcaseComponent],
-  imports: [
-    CommonModule,
-    CheckboxModule,
-    RouterModule.forChild(routes),
-  ],
+    declarations: [CheckboxShowcaseComponent],
+    imports: [
+        CommonModule,
+        CheckboxModule,
+        RouterModule.forChild(routes),
+    ],
 })
 export class CheckboxShowcaseModule {}
