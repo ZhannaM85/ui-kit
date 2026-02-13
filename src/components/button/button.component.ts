@@ -1,23 +1,27 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'lib-button',
-  standalone: false,
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+    selector: 'kit-button',
+    standalone: false,
+    templateUrl: './button.component.html',
+    styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent {
-  @Input() label: string = '';
-  @Input() variant: 'primary' | 'secondary' | 'danger' = 'primary';
-  @Input() disabled: boolean = false;
-  @Input() type: 'button' | 'submit' | 'reset' = 'button';
-  @Input() size: 'small' | 'medium' | 'large' = 'medium';
+  @Input() public label = '';
 
-  @Output() click = new EventEmitter<MouseEvent>();
+  @Input() public variant: 'primary' | 'secondary' | 'danger' = 'primary';
 
-  onClick(event: MouseEvent): void {
-    if (!this.disabled) {
-      this.click.emit(event);
-    }
+  @Input() public disabled = false;
+
+  @Input() public type: 'button' | 'submit' | 'reset' = 'button';
+
+  @Input() public size: 'small' | 'medium' | 'large' = 'medium';
+
+  @Output() public buttonClicked = new EventEmitter<MouseEvent>();
+
+  public onClick(event: MouseEvent): void {
+      if (!this.disabled) {
+          this.buttonClicked.emit(event);
+      }
   }
 }

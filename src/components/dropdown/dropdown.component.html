@@ -2,7 +2,7 @@
   <div
     class="lib-dropdown__trigger"
     [class.lib-dropdown__trigger--open]="isOpen"
-    (click)="toggleDropdown()">
+    (buttonClicked)="toggleDropdown()">
     <span class="lib-dropdown__value">
       {{ selectedOption ? selectedOption.label : placeholder }}
     </span>
@@ -27,7 +27,7 @@
       *ngFor="let option of options"
       class="lib-dropdown__option"
       [class.lib-dropdown__option--selected]="selectedOption?.value === option.value"
-      (click)="selectOption(option)">
+      (buttonClicked)="selectOption(option)">
       {{ option.label }}
     </div>
     <div *ngIf="options.length === 0" class="lib-dropdown__option lib-dropdown__option--empty">
