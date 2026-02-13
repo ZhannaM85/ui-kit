@@ -49,6 +49,20 @@ export class DropdownComponent implements OnChanges, OnInit {
         }
     }
 
+    public onTriggerKeydown(event: KeyboardEvent): void {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            this.toggleDropdown();
+        }
+    }
+
+    public onOptionKeydown(event: KeyboardEvent, option: DropdownOption): void {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            this.selectOption(option);
+        }
+    }
+
     public selectOption(option: DropdownOption): void {
         if (!this.disabled) {
             this.selectedOption = option;

@@ -28,11 +28,21 @@
     </section>
 
     <section class="showcase-section">
-            <h3>Disabled</h3>
+        <h3>Default</h3>
+        <kit-dropdown
+            [options]="options"
+            placeholder="Choose one"
+            [selectedValue]="selectedValue"
+            (selectionChange)="selectedValue = $event">
+        </kit-dropdown>
+    </section>
+
+    <section class="showcase-section">
+        <h3>Disabled</h3>
         <kit-dropdown
             [options]="options"
             placeholder="Disabled"
             [disabled]="true">
-        ></kit-dropdown>
+        </kit-dropdown>
     </section>
 </div>
