@@ -1,0 +1,30 @@
+<div class="showcase">
+  <h1 class="showcase-title">Button</h1>
+  <p class="showcase-desc">Variants and sizes of the button component.</p>
+
+  <section class="showcase-section">
+    <h3>Variants</h3>
+    <div class="row">
+      <lib-button label="Primary" variant="primary" (click)="onClick($event)"></lib-button>
+      <lib-button label="Secondary" variant="secondary" (click)="onClick($event)"></lib-button>
+      <lib-button label="Danger" variant="danger" (click)="onClick($event)"></lib-button>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>Sizes</h3>
+    <div class="row">
+      <lib-button label="Small" size="small" (click)="onClick($event)"></lib-button>
+      <lib-button label="Medium" size="medium" (click)="onClick($event)"></lib-button>
+      <lib-button label="Large" size="large" (click)="onClick($event)"></lib-button>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>States</h3>
+    <div class="row">
+      <lib-button label="Disabled" [disabled]="true"></lib-button>
+      <lib-button label="Submit" type="submit" (click)="onClick($event)"></lib-button>
+    </div>
+  </section>
+</div>

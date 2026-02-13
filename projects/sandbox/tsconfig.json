@@ -2,7 +2,12 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/sandbox",
-    "types": []
+    "types": [],
+    "baseUrl": "../../",
+    "paths": {
+      "@Zhannam85/ui-kit": ["dist/ui-kit"],
+      "@Zhannam85/ui-kit/*": ["dist/ui-kit/*"]
+    }
   },
   "include": ["src/**/*.ts"]
 }

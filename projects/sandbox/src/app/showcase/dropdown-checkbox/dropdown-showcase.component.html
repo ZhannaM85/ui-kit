@@ -1,0 +1,26 @@
+<div class="showcase">
+  <h1 class="showcase-title">Dropdown</h1>
+  <p class="showcase-desc">Select component with customizable options.</p>
+
+  <section class="showcase-section">
+    <h3>Basic</h3>
+    <lib-dropdown
+      [options]="options"
+      placeholder="Choose one"
+      [selectedValue]="selectedValue"
+      (selectionChange)="selectedValue = $event"
+    ></lib-dropdown>
+    @if (selectedValue !== null) {
+      <p class="result">Selected: {{ selectedValue }}</p>
+    }
+  </section>
+
+  <section class="showcase-section">
+    <h3>Disabled</h3>
+    <lib-dropdown
+      [options]="options"
+      placeholder="Disabled"
+      [disabled]="true"
+    ></lib-dropdown>
+  </section>
+</div>

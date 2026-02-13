@@ -4,12 +4,11 @@
     type="text"
     class="sidebar-filter"
     placeholder="Filter components..."
-    [ngModel]="filter()"
-    (ngModelChange)="filter.set($event)"
+    [(ngModel)]="filter"
   />
 </div>
 <nav class="sidebar-nav">
-  @for (item of filteredItems(); track item.path) {
+  @for (item of filteredItems; track item.path) {
     <a
       [routerLink]="item.path"
       routerLinkActive="active"
@@ -19,7 +18,7 @@
       {{ item.label }}
     </a>
   }
-  @if (filteredItems().length === 0) {
-    <p class="sidebar-empty">No components match "{{ filter() }}"</p>
+  @if (filteredItems.length === 0) {
+    <p class="sidebar-empty">No components match "{{ filter }}"</p>
   }
 </nav>

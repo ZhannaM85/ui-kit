@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -22,16 +22,16 @@ const COMPONENTS: NavItem[] = [
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-  filter = signal('');
+  filter = '';
   items = COMPONENTS;
 
-  filteredItems = computed(() => {
-    const q = this.filter().trim().toLowerCase();
+  get filteredItems(): NavItem[] {
+    const q = this.filter.trim().toLowerCase();
     if (!q) return this.items;
     return this.items.filter(
       (item) =>
         item.name.toLowerCase().includes(q) ||
         item.label.toLowerCase().includes(q)
     );
-  });
+  }
 }
