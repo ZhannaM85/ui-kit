@@ -3,6 +3,16 @@
   <p class="showcase-desc">Select component with customizable options.</p>
 
   <section class="showcase-section">
+    <h3>Usage</h3>
+    <pre class="usage-example"><code>&lt;lib-dropdown
+  [options]="options"
+  placeholder="Choose one"
+  [selectedValue]="selectedValue"
+  (selectionChange)="onSelectionChange($event)"
+&gt;&lt;/lib-dropdown&gt;</code></pre>
+  </section>
+
+  <section class="showcase-section">
     <h3>Basic</h3>
     <lib-dropdown
       [options]="options"

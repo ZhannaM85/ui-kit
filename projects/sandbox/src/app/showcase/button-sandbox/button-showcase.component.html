@@ -3,6 +3,18 @@
   <p class="showcase-desc">Variants and sizes of the button component.</p>
 
   <section class="showcase-section">
+    <h3>Usage</h3>
+    <pre class="usage-example"><code>&lt;lib-button
+  [label]="'My button label'"
+  [variant]="'primary'"
+  [disabled]="false"
+  [type]="'submit'"
+  [size]="'large'"
+  (click)="buttonClicked($event)"
+&gt;&lt;/lib-button&gt;</code></pre>
+  </section>
+
+  <section class="showcase-section">
     <h3>Variants</h3>
     <div class="row">
       <lib-button label="Primary" variant="primary" (click)="onClick($event)"></lib-button>

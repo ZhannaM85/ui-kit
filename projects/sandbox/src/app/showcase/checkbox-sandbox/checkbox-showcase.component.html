@@ -3,6 +3,17 @@
   <p class="showcase-desc">Checkbox with label and states.</p>
 
   <section class="showcase-section">
+    <h3>Usage</h3>
+    <pre class="usage-example"><code>&lt;lib-checkbox
+  label="Accept terms and conditions"
+  [checked]="checked"
+  [disabled]="false"
+  [indeterminate]="false"
+  (checkedChange)="onCheckedChange($event)"
+&gt;&lt;/lib-checkbox&gt;</code></pre>
+  </section>
+
+  <section class="showcase-section">
     <h3>Basic</h3>
     <lib-checkbox
       label="Accept terms and conditions"

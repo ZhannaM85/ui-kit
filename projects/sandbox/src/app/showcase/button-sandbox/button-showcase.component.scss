@@ -30,3 +30,19 @@
   gap: 0.75rem;
   align-items: center;
 }
+
+.usage-example {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #374151;
+
+  code {
+    font-family: ui-monospace, monospace;
+  }
+}
