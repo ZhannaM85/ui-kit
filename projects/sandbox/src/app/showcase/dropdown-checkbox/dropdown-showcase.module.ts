@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DropdownComponent } from '@Zhannam85/ui-kit';
+import { DropdownModule } from '@Zhannam85/ui-kit';
 
 import { DropdownShowcaseComponent } from './dropdown-showcase.component';
 
@@ -12,7 +12,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [DropdownShowcaseComponent],
   imports: [
-    DropdownComponent,
+    DropdownModule,
     RouterModule.forChild(routes),
   ],
 })

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ButtonComponent } from '@Zhannam85/ui-kit';
+import { ButtonModule } from '@Zhannam85/ui-kit';
 
 import { ButtonShowcaseComponent } from './button-showcase.component';
 
@@ -12,7 +12,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [ButtonShowcaseComponent],
   imports: [
-    ButtonComponent,
+    ButtonModule,
     RouterModule.forChild(routes),
   ],
 })

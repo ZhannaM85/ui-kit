@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CheckboxComponent } from '@Zhannam85/ui-kit';
+import { CheckboxModule } from '@Zhannam85/ui-kit';
 
 import { CheckboxShowcaseComponent } from './checkbox-showcase.component';
 
@@ -12,7 +12,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [CheckboxShowcaseComponent],
   imports: [
-    CheckboxComponent,
+    CheckboxModule,
     RouterModule.forChild(routes),
   ],
 })
