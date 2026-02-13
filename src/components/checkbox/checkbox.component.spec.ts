@@ -22,7 +22,7 @@ describe('CheckboxComponent', () => {
   it('should display label when provided', () => {
     component.label = 'Test Checkbox';
     fixture.detectChanges();
-    
+
     const labelElement = fixture.nativeElement.querySelector('.lib-checkbox__label');
     expect(labelElement).toBeTruthy();
     expect(labelElement.textContent.trim()).toBe('Test Checkbox');
@@ -31,7 +31,7 @@ describe('CheckboxComponent', () => {
   it('should not display label when empty', () => {
     component.label = '';
     fixture.detectChanges();
-    
+
     const labelElement = fixture.nativeElement.querySelector('.lib-checkbox__label');
     expect(labelElement).toBeFalsy();
   });
@@ -39,7 +39,7 @@ describe('CheckboxComponent', () => {
   it('should set checked state', () => {
     component.checked = true;
     fixture.detectChanges();
-    
+
     const inputElement = fixture.nativeElement.querySelector('input[type="checkbox"]');
     expect(inputElement.checked).toBe(true);
   });
@@ -47,7 +47,7 @@ describe('CheckboxComponent', () => {
   it('should set disabled state', () => {
     component.disabled = true;
     fixture.detectChanges();
-    
+
     const inputElement = fixture.nativeElement.querySelector('input[type="checkbox"]');
     expect(inputElement.disabled).toBe(true);
   });
@@ -55,7 +55,7 @@ describe('CheckboxComponent', () => {
   it('should set indeterminate state', () => {
     component.indeterminate = true;
     fixture.detectChanges();
-    
+
     const inputElement = fixture.nativeElement.querySelector('input[type="checkbox"]');
     expect(inputElement.indeterminate).toBe(true);
   });
@@ -65,11 +65,11 @@ describe('CheckboxComponent', () => {
     component.checked = false;
     component.disabled = false;
     fixture.detectChanges();
-    
+
     const inputElement = fixture.nativeElement.querySelector('input[type="checkbox"]');
     inputElement.click();
     fixture.detectChanges();
-    
+
     expect(component.checkedChange.emit).toHaveBeenCalledWith(true);
   });
 
@@ -77,11 +77,11 @@ describe('CheckboxComponent', () => {
     spyOn(component.checkedChange, 'emit');
     component.disabled = true;
     fixture.detectChanges();
-    
+
     const inputElement = fixture.nativeElement.querySelector('input[type="checkbox"]');
     inputElement.click();
     fixture.detectChanges();
-    
+
     expect(component.checkedChange.emit).not.toHaveBeenCalled();
   });
 
@@ -90,11 +90,11 @@ describe('CheckboxComponent', () => {
     component.checked = false;
     component.disabled = false;
     fixture.detectChanges();
-    
+
     const inputElement = fixture.nativeElement.querySelector('input[type="checkbox"]');
     inputElement.click();
     fixture.detectChanges();
-    
+
     expect(component.indeterminate).toBe(false);
   });
 
@@ -102,18 +102,18 @@ describe('CheckboxComponent', () => {
     component.checked = false;
     component.disabled = false;
     fixture.detectChanges();
-    
+
     const inputElement = fixture.nativeElement.querySelector('input[type="checkbox"]');
     inputElement.click();
     fixture.detectChanges();
-    
+
     expect(component.checked).toBe(true);
   });
 
   it('should generate unique checkbox IDs', () => {
     const id1 = component.getCheckboxId();
     const id2 = component.getCheckboxId();
-    
+
     expect(id1).toBeTruthy();
     expect(id2).toBeTruthy();
     expect(id1).not.toBe(id2);

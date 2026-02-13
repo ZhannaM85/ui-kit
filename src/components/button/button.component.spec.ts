@@ -60,24 +60,24 @@ describe('ButtonComponent', () => {
   });
 
   it('should emit click event when clicked and not disabled', () => {
-    spyOn(component.click, 'emit');
+    spyOn(component.buttonClicked, 'emit');
     component.disabled = false;
     fixture.detectChanges();
-    
+
     const buttonElement = fixture.nativeElement.querySelector('button');
     buttonElement.click();
-    
-    expect(component.click.emit).toHaveBeenCalled();
+
+    expect(component.buttonClicked.emit).toHaveBeenCalled();
   });
 
   it('should not emit click event when disabled', () => {
-    spyOn(component.click, 'emit');
+    spyOn(component.buttonClicked, 'emit');
     component.disabled = true;
     fixture.detectChanges();
-    
+
     const buttonElement = fixture.nativeElement.querySelector('button');
     buttonElement.click();
-    
-    expect(component.click.emit).not.toHaveBeenCalled();
+
+    expect(component.buttonClicked.emit).not.toHaveBeenCalled();
   });
 });

@@ -86,4 +86,11 @@ module.exports = defineConfig([
       ],
     },
   },
+  // Library templates: allow *ngIf / *ngFor (no requirement for @if / @for)
+  {
+    files: ["src/**/*.html"],
+    rules: {
+      "@angular-eslint/template/prefer-control-flow": "off",
+    },
+  },
 ]);

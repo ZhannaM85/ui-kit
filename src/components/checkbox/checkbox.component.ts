@@ -7,14 +7,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent {
-  @Input() label: string = '';
-  @Input() checked: boolean = false;
-  @Input() disabled: boolean = false;
-  @Input() indeterminate: boolean = false;
+  @Input() public label = '';
 
-  @Output() checkedChange = new EventEmitter<boolean>();
+  @Input() public checked = false;
 
-  onCheckboxChange(event: Event): void {
+  @Input() public disabled = false;
+
+  @Input() public indeterminate = false;
+
+  @Output() public checkedChange = new EventEmitter<boolean>();
+
+  public onCheckboxChange(event: Event): void {
     if (!this.disabled) {
       const target = event.target as HTMLInputElement;
       this.checked = target.checked;
@@ -23,7 +26,7 @@ export class CheckboxComponent {
     }
   }
 
-  getCheckboxId(): string {
-    return `lib-checkbox-${Math.random().toString(36).substr(2, 9)}`;
+  public getCheckboxId(): string {
+    return `kit-checkbox-${Math.random().toString(36).substr(2, 9)}`;
   }
 }

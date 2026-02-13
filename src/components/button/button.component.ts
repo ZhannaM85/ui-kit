@@ -17,11 +17,11 @@ export class ButtonComponent {
 
   @Input() public size: 'small' | 'medium' | 'large' = 'medium';
 
-  @Output() public butonClicked = new EventEmitter<MouseEvent>();
+  @Output() public buttonClicked = new EventEmitter<MouseEvent>();
 
   public onClick(event: MouseEvent): void {
     if (!this.disabled) {
-      this.butonClicked.emit(event);
+      this.buttonClicked.emit(event);
     }
   }
 }
