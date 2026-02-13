@@ -30,9 +30,42 @@
   color: #6b7280;
 }
 
+.usage-block {
+  position: relative;
+}
+
+.usage-copy {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #fff;
+  color: #6b7280;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: #f3f4f6;
+    color: #374151;
+    border-color: #d1d5db;
+  }
+}
+
+.usage-copy-icon {
+  flex-shrink: 0;
+}
+
 .usage-example {
   margin: 0;
   padding: 1rem 1.25rem;
+  padding-right: 3rem;
   background: #f9fafb;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
