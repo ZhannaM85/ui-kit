@@ -1,0 +1,32 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+
+# Build files
+tsconfig*.json
+jest.config.js
+setup-jest.ts
+ng-package.json
+
+# Test files
+*.spec.ts
+
+# Development files
+.gitignore
+.npmignore
+.editorconfig
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-*
+
+# Documentation (keep README.md)
+# README.md
+
+# Misc
+.DS_Store
+Thumbs.db
+coverage/
+out-tsc/

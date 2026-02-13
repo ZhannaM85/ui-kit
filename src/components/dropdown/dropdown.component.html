@@ -1,0 +1,37 @@
+<div class="lib-dropdown" [class.lib-dropdown--disabled]="disabled">
+  <div
+    class="lib-dropdown__trigger"
+    [class.lib-dropdown__trigger--open]="isOpen"
+    (click)="toggleDropdown()">
+    <span class="lib-dropdown__value">
+      {{ selectedOption ? selectedOption.label : placeholder }}
+    </span>
+    <svg
+      class="lib-dropdown__arrow"
+      [class.lib-dropdown__arrow--open]="isOpen"
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M3 4.5L6 7.5L9 4.5"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="lib-dropdown__menu" *ngIf="isOpen && !disabled">
+    <div
+      *ngFor="let option of options"
+      class="lib-dropdown__option"
+      [class.lib-dropdown__option--selected]="selectedOption?.value === option.value"
+      (click)="selectOption(option)">
+      {{ option.label }}
+    </div>
+    <div *ngIf="options.length === 0" class="lib-dropdown__option lib-dropdown__option--empty">
+      No options available
+    </div>
+  </div>
+</div>

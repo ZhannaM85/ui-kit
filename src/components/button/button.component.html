@@ -1,0 +1,7 @@
+<button
+  [type]="type"
+  [disabled]="disabled"
+  [class]="'lib-button lib-button--' + variant + ' lib-button--' + size"
+  (click)="onClick($event)">
+  {{ label }}
+</button>

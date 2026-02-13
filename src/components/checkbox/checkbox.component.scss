@@ -1,0 +1,97 @@
+.lib-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  font-size: 16px;
+  line-height: 1.5;
+
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:focus-visible + .lib-checkbox__checkmark {
+      outline: 2px solid #4a90e2;
+      outline-offset: 2px;
+    }
+
+    &:checked ~ .lib-checkbox__checkmark {
+      background-color: #4a90e2;
+      border-color: #4a90e2;
+
+      &::after {
+        display: block;
+      }
+    }
+
+    &:indeterminate ~ .lib-checkbox__checkmark {
+      background-color: #4a90e2;
+      border-color: #4a90e2;
+
+      &::after {
+        display: block;
+        width: 10px;
+        height: 2px;
+        border: none;
+        background-color: white;
+        transform: translate(-50%, -50%) rotate(0deg);
+        left: 50%;
+        top: 50%;
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__checkmark {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    transition: all 0.2s ease-in-out;
+    flex-shrink: 0;
+
+    &:hover {
+      border-color: #4a90e2;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: none;
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  &__label {
+    color: #333;
+    font-weight: 400;
+  }
+
+  &:hover:not(.lib-checkbox--disabled) .lib-checkbox__checkmark {
+    border-color: #4a90e2;
+  }
+}

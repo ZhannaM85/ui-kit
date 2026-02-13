@@ -1,0 +1,17 @@
+module.exports = {
+  preset: 'jest-preset-angular',
+  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+  testMatch: ['**/+(*.)+(spec).+(ts)'],
+  collectCoverage: true,
+  coverageReporters: ['html', 'text-summary'],
+  coverageDirectory: 'coverage',
+  transform: {
+    '^.+\\.(ts|mjs|js|html)$': [
+      'jest-preset-angular',
+      {
+        tsconfig: '<rootDir>/tsconfig.spec.json',
+        stringifyContentPathRegex: '\\.(html|svg)$'
+      }
+    ]
+  }
+};
