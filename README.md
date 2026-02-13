@@ -36,12 +36,12 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [ButtonComponent],
   template: `
-    <lib-button
+    <kit-button
       label="Click Me"
       variant="primary"
       size="medium"
-      (click)="handleClick($event)">
-    </lib-button>
+      (buttonClicked)="handleClick($event)">
+    </kit-button>
   `
 })
 export class ExampleComponent {
@@ -82,12 +82,12 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [DropdownComponent],
   template: `
-    <lib-dropdown
+    <kit-dropdown
       [options]="options"
       placeholder="Select an option"
       [selectedValue]="selectedValue"
       (selectionChange)="onSelectionChange($event)">
-    </lib-dropdown>
+    </kit-dropdown>
   `
 })
 export class ExampleComponent {
@@ -145,11 +145,11 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [CheckboxComponent],
   template: `
-    <lib-checkbox
+    <kit-checkbox
       label="Accept terms and conditions"
       [checked]="isChecked"
       (checkedChange)="onCheckedChange($event)">
-    </lib-checkbox>
+    </kit-checkbox>
   `
 })
 export class ExampleComponent {
@@ -272,9 +272,9 @@ import { ButtonComponent, DropdownComponent, CheckboxComponent } from '@yourname
 
 3. Use them in your template:
 ```html
-<lib-button label="Submit" variant="primary" (click)="onSubmit()"></lib-button>
-<lib-dropdown [options]="myOptions" (selectionChange)="onChange($event)"></lib-dropdown>
-<lib-checkbox label="I agree" [checked]="agreed" (checkedChange)="onAgreeChange($event)"></lib-checkbox>
+<kit-button label="Submit" variant="primary" (buttonClicked)="onSubmit()"></kit-button>
+<kit-dropdown [options]="myOptions" (selectionChange)="onChange($event)"></kit-dropdown>
+<kit-checkbox label="I agree" [checked]="agreed" (checkedChange)="onAgreeChange($event)"></kit-checkbox>
 ```
 
 ## Browser Support

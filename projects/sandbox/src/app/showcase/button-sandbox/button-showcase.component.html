@@ -7,7 +7,7 @@
     <div class="usage-block">
       <div class="usage-copy-wrap">
         <span *ngIf="copied" class="usage-copied-label">Copied!</span>
-        <button type="button" class="usage-copy" [class.usage-copy--success]="copied" (click)="copyUsageCode()" [title]="copied ? 'Copied!' : 'Copy code'">
+        <button type="button" class="usage-copy" [class.usage-copy--success]="copied" (buttonClicked)="copyUsageCode()" [title]="copied ? 'Copied!' : 'Copy code'">
           <svg *ngIf="copied" class="usage-copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M20 6L9 17l-5-5"/>
           </svg>
@@ -17,40 +17,40 @@
           </svg>
         </button>
       </div>
-      <pre class="usage-example"><code>&lt;lib-button
+      <pre class="usage-example"><code>&lt;kit-button
   [label]="'My button label'"
   [variant]="'primary'"
   [disabled]="false"
   [type]="'submit'"
   [size]="'large'"
-  (click)="buttonClicked($event)"
-&gt;&lt;/lib-button&gt;</code></pre>
+  (buttonClicked)="buttonClicked($event)"
+&gt;&lt;/kit-button&gt;</code></pre>
     </div>
   </section>
 
   <section class="showcase-section">
     <h3>Variants</h3>
     <div class="row">
-      <lib-button label="Primary" variant="primary" (click)="onClick($event)"></lib-button>
-      <lib-button label="Secondary" variant="secondary" (click)="onClick($event)"></lib-button>
-      <lib-button label="Danger" variant="danger" (click)="onClick($event)"></lib-button>
+      <kit-button label="Primary" variant="primary" (buttonClicked)="onClick($event)"></kit-button>
+      <kit-button label="Secondary" variant="secondary" (buttonClicked)="onClick($event)"></kit-button>
+      <kit-button label="Danger" variant="danger" (buttonClicked)="onClick($event)"></kit-button>
     </div>
   </section>
 
   <section class="showcase-section">
     <h3>Sizes</h3>
     <div class="row">
-      <lib-button label="Small" size="small" (click)="onClick($event)"></lib-button>
-      <lib-button label="Medium" size="medium" (click)="onClick($event)"></lib-button>
-      <lib-button label="Large" size="large" (click)="onClick($event)"></lib-button>
+      <kit-button label="Small" size="small" (buttonClicked)="onClick($event)"></kit-button>
+      <kit-button label="Medium" size="medium" (buttonClicked)="onClick($event)"></kit-button>
+      <kit-button label="Large" size="large" (buttonClicked)="onClick($event)"></kit-button>
     </div>
   </section>
 
   <section class="showcase-section">
     <h3>States</h3>
     <div class="row">
-      <lib-button label="Disabled" [disabled]="true"></lib-button>
-      <lib-button label="Submit" type="submit" (click)="onClick($event)"></lib-button>
+      <kit-button label="Disabled" [disabled]="true"></kit-button>
+      <kit-button label="Submit" type="submit" (buttonClicked)="onClick($event)"></kit-button>
     </div>
   </section>
 </div>

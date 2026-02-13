@@ -8,12 +8,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { routes } from './app.routes';
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    RouterModule.forRoot(routes),
-  ],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent, SidebarComponent],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        RouterModule.forRoot(routes),
+    ],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

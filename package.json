@@ -2,16 +2,27 @@
   "name": "@Zhannam85/ui-kit",
   "version": "0.1.0",
   "description": "A modern Angular UI kit library with Button, Dropdown, and Checkbox components",
-  "keywords": ["angular", "ui-kit", "components", "button", "dropdown", "checkbox"],
+  "keywords": [
+    "angular",
+    "ui-kit",
+    "components",
+    "button",
+    "dropdown",
+    "checkbox"
+  ],
   "author": "",
   "license": "MIT",
-  "repository": { "type": "git", "url": "" },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "scripts": {
     "build": "ng-packagr -p ng-package.json",
     "start": "npm run build && ng cache clean && ng serve",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "lint": "ng lint"
   },
   "peerDependencies": {
     "@angular/common": "^21.0.0",
@@ -24,6 +35,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^21.0.0",
     "@angular/animations": "^21.0.0",
     "@angular/cli": "^21.0.0",
     "@angular/compiler": "^21.0.0",
@@ -31,14 +43,16 @@
     "@angular/forms": "^21.0.0",
     "@angular/platform-browser": "^21.0.0",
     "@angular/platform-browser-dynamic": "^21.0.0",
-    "@angular-devkit/build-angular": "^21.0.0",
     "@types/jest": "^29.5.0",
     "@types/node": "^20.0.0",
+    "angular-eslint": "21.2.0",
+    "eslint": "^9.39.2",
     "jest": "^30.0.0",
     "jest-preset-angular": "^16.0.0",
     "ng-packagr": "^21.0.0",
     "ts-jest": "^29.1.0",
     "typescript": "^5.4.0",
+    "typescript-eslint": "8.50.1",
     "zone.js": "~0.15.0"
   },
   "main": "dist/ui-kit/fesm2022/ui-kit.mjs",

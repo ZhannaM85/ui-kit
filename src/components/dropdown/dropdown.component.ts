@@ -1,63 +1,68 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, EventEmitter, HostListener, Input, Output, OnChanges, OnInit } from '@angular/core';
 
 export interface DropdownOption {
-  label: string;
-  value: any;
+    label: string;
+    value: any;
 }
 
 @Component({
-  selector: 'lib-dropdown',
-  standalone: false,
-  templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss']
+    selector: 'kit-dropdown',
+    standalone: false,
+    templateUrl: './dropdown.component.html',
+    styleUrls: ['./dropdown.component.scss']
 })
 export class DropdownComponent implements OnChanges, OnInit {
-  @Input() options: DropdownOption[] = [];
-  @Input() placeholder: string = 'Select an option';
-  @Input() selectedValue: any = null;
-  @Input() disabled: boolean = false;
+    @Input() public options: DropdownOption[] = [];
 
-  @Output() selectionChange = new EventEmitter<any>();
+    @Input() public placeholder = 'Select an option';
 
-  isOpen: boolean = false;
-  selectedOption: DropdownOption | null = null;
+    @Input() public selectedValue: any = null;
 
-  ngOnChanges(): void {
-    this.updateSelectedOption();
-  }
+    @Input() public disabled = false;
 
-  ngOnInit(): void {
-    this.updateSelectedOption();
-  }
+    @Output() public selectionChange = new EventEmitter<any>();
 
-  private updateSelectedOption(): void {
-    if (this.selectedValue !== null && this.selectedValue !== undefined) {
-      this.selectedOption = this.options.find(opt => opt.value === this.selectedValue) || null;
-    } else {
-      this.selectedOption = null;
+    public isOpen = false;
+
+    public selectedOption: DropdownOption | null = null;
+
+    public ngOnChanges(): void {
+        this.updateSelectedOption();
     }
-  }
 
-  toggleDropdown(): void {
-    if (!this.disabled) {
-      this.isOpen = !this.isOpen;
+    public ngOnInit(): void {
+        this.updateSelectedOption();
     }
-  }
 
-  selectOption(option: DropdownOption): void {
-    if (!this.disabled) {
-      this.selectedOption = option;
-      this.selectedValue = option.value;
-      this.isOpen = false;
-      this.selectionChange.emit(option.value);
+    private updateSelectedOption(): void {
+        if (this.selectedValue !== null && this.selectedValue !== undefined) {
+            this.selectedOption = this.options.find(opt => opt.value === this.selectedValue) || null;
+        } else {
+            this.selectedOption = null;
+        }
     }
-  }
+
+    public toggleDropdown(): void {
+        if (!this.disabled) {
+            this.isOpen = !this.isOpen;
+        }
+    }
+
+    public selectOption(option: DropdownOption): void {
+        if (!this.disabled) {
+            this.selectedOption = option;
+            this.selectedValue = option.value;
+            this.isOpen = false;
+            this.selectionChange.emit(option.value);
+        }
+    }
 
   @HostListener('document:click', ['$event'])
-  onClickOutside(event: Event): void {
-    const target = event.target as HTMLElement;
-    if (!target.closest('.lib-dropdown')) {
-      this.isOpen = false;
+    public onClickOutside(event: Event): void {
+        const target = event.target as HTMLElement;
+        if (!target.closest('.lib-dropdown')) {
+            this.isOpen = false;
+        }
     }
-  }
 }
