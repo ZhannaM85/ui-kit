@@ -1,0 +1,25 @@
+<div class="sidebar-header">
+  <h2 class="sidebar-title">Components</h2>
+  <input
+    type="text"
+    class="sidebar-filter"
+    placeholder="Filter components..."
+    [ngModel]="filter()"
+    (ngModelChange)="filter.set($event)"
+  />
+</div>
+<nav class="sidebar-nav">
+  @for (item of filteredItems(); track item.path) {
+    <a
+      [routerLink]="item.path"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: false }"
+      class="sidebar-link"
+    >
+      {{ item.label }}
+    </a>
+  }
+  @if (filteredItems().length === 0) {
+    <p class="sidebar-empty">No components match "{{ filter() }}"</p>
+  }
+</nav>
