@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, EventEmitter, HostListener, Input, Output, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output, OnInit } from '@angular/core';
 
 export interface DropdownOption {
     label: string;
@@ -12,12 +12,29 @@ export interface DropdownOption {
     templateUrl: './dropdown.component.html',
     styleUrls: ['./dropdown.component.scss']
 })
-export class DropdownComponent implements OnChanges, OnInit {
-    @Input() public options: DropdownOption[] = [];
+export class DropdownComponent implements OnInit {
+    private _options: DropdownOption[] = [];
+    private _selectedValue: any = null;
+
+    @Input() public set options(value: DropdownOption[]) {
+        this._options = value ?? [];
+        this.updateSelectedOption();
+    }
+
+    public get options(): DropdownOption[] {
+        return this._options;
+    }
 
     @Input() public placeholder = 'Select an option';
 
-    @Input() public selectedValue: any = null;
+    @Input() public set selectedValue(value: any) {
+        this._selectedValue = value;
+        this.updateSelectedOption();
+    }
+
+    public get selectedValue(): any {
+        return this._selectedValue;
+    }
 
     @Input() public disabled = false;
 
@@ -27,17 +44,13 @@ export class DropdownComponent implements OnChanges, OnInit {
 
     public selectedOption: DropdownOption | null = null;
 
-    public ngOnChanges(): void {
-        this.updateSelectedOption();
-    }
-
     public ngOnInit(): void {
         this.updateSelectedOption();
     }
 
     private updateSelectedOption(): void {
-        if (this.selectedValue !== null && this.selectedValue !== undefined) {
-            this.selectedOption = this.options.find(opt => opt.value === this.selectedValue) || null;
+        if (this._selectedValue !== null && this._selectedValue !== undefined) {
+            this.selectedOption = this._options.find(opt => opt.value === this._selectedValue) || null;
         } else {
             this.selectedOption = null;
         }
@@ -66,7 +79,7 @@ export class DropdownComponent implements OnChanges, OnInit {
     public selectOption(option: DropdownOption): void {
         if (!this.disabled) {
             this.selectedOption = option;
-            this.selectedValue = option.value;
+            this._selectedValue = option.value;
             this.isOpen = false;
             this.selectionChange.emit(option.value);
         }

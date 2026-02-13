@@ -7,7 +7,7 @@ describe('CheckboxComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [CheckboxComponent]
+            declarations: [CheckboxComponent]
         }).compileComponents();
 
         fixture = TestBed.createComponent(CheckboxComponent);
@@ -61,7 +61,7 @@ describe('CheckboxComponent', () => {
     });
 
     it('should emit checkedChange when checkbox is clicked', () => {
-        spyOn(component.checkedChange, 'emit');
+        jest.spyOn(component.checkedChange, 'emit');
         component.checked = false;
         component.disabled = false;
         fixture.detectChanges();
@@ -74,7 +74,7 @@ describe('CheckboxComponent', () => {
     });
 
     it('should not emit checkedChange when disabled', () => {
-        spyOn(component.checkedChange, 'emit');
+        jest.spyOn(component.checkedChange, 'emit');
         component.disabled = true;
         fixture.detectChanges();
 

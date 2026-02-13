@@ -7,7 +7,7 @@ describe('ButtonComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [ButtonComponent]
+            declarations: [ButtonComponent]
         }).compileComponents();
 
         fixture = TestBed.createComponent(ButtonComponent);
@@ -60,7 +60,7 @@ describe('ButtonComponent', () => {
     });
 
     it('should emit click event when clicked and not disabled', () => {
-        spyOn(component.buttonClicked, 'emit');
+        jest.spyOn(component.buttonClicked, 'emit');
         component.disabled = false;
         fixture.detectChanges();
 
@@ -71,7 +71,7 @@ describe('ButtonComponent', () => {
     });
 
     it('should not emit click event when disabled', () => {
-        spyOn(component.buttonClicked, 'emit');
+        jest.spyOn(component.buttonClicked, 'emit');
         component.disabled = true;
         fixture.detectChanges();
 

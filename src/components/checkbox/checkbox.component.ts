@@ -26,7 +26,6 @@ export class CheckboxComponent {
           this.checked = target.checked;
           this.indeterminate = false; // Clear indeterminate state when user interacts
           this.checkedChange.emit(this.checked);
-          console.log('Checkbox clicked', { checked: this.checked, label: this.label });
       }
   }
 }
