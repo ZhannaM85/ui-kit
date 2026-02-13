@@ -31,4 +31,8 @@ export class SidebarComponent {
         item.label.toLowerCase().includes(q)
     );
   }
+
+  trackByPath(_index: number, item: NavItem): string {
+    return item.path;
+  }
 }

@@ -8,17 +8,14 @@
   />
 </div>
 <nav class="sidebar-nav">
-  @for (item of filteredItems; track item.path) {
-    <a
-      [routerLink]="item.path"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: false }"
-      class="sidebar-link"
-    >
-      {{ item.label }}
-    </a>
-  }
-  @if (filteredItems.length === 0) {
-    <p class="sidebar-empty">No components match "{{ filter }}"</p>
-  }
+  <a
+    *ngFor="let item of filteredItems; trackBy: trackByPath"
+    [routerLink]="item.path"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: false }"
+    class="sidebar-link"
+  >
+    {{ item.label }}
+  </a>
+  <p *ngIf="filteredItems.length === 0" class="sidebar-empty">No components match "{{ filter }}"</p>
 </nav>

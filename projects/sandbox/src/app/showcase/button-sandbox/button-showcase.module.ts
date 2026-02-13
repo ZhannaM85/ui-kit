@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ButtonModule } from '@Zhannam85/ui-kit';
@@ -12,6 +13,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [ButtonShowcaseComponent],
   imports: [
+    CommonModule,
     ButtonModule,
     RouterModule.forChild(routes),
   ],
