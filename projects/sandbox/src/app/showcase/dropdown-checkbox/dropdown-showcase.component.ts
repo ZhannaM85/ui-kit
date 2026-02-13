@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { DropdownComponent, DropdownOption } from '@Zhannam85/ui-kit';
+import { DropdownOption } from '@Zhannam85/ui-kit';
 
 @Component({
   selector: 'app-dropdown-showcase',
-  standalone: true,
-  imports: [DropdownComponent],
+  standalone: false,
   templateUrl: './dropdown-showcase.component.html',
   styleUrls: ['./dropdown-showcase.component.scss'],
 })
