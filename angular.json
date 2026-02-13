@@ -1,0 +1,58 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "sandbox": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/sandbox",
+      "sourceRoot": "projects/sandbox/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/sandbox",
+            "index": "projects/sandbox/src/index.html",
+            "browser": "projects/sandbox/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/sandbox/tsconfig.app.json",
+            "assets": ["projects/sandbox/src/favicon.ico", "projects/sandbox/src/assets"],
+            "styles": ["projects/sandbox/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budget": [
+                { "type": "initial", "maximumWarning": "500kb", "maximumError": "1mb" },
+                { "type": "anyComponentStyle", "maximumWarning": "2kb", "maximumError": "4kb" }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": { "buildTarget": "sandbox:build:production" },
+            "development": { "buildTarget": "sandbox:build:development" }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}

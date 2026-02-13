@@ -1,10 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'lib-button',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss']
 })

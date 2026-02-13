@@ -1,11 +1,11 @@
 # Angular UI Kit
 
-A modern, reusable Angular 16 UI component library featuring Button, Dropdown, and Checkbox components. Built with standalone components and designed for easy integration into Angular applications.
+A modern, reusable Angular 21 UI component library featuring Button, Dropdown, and Checkbox components. Built with standalone components and designed for easy integration into Angular applications.
 
 ## Features
 
 - 🎨 **Modern Design**: Clean, polished UI components with smooth animations
-- 📦 **Standalone Components**: Built with Angular 16 standalone components (no NgModules required)
+- 📦 **Standalone Components**: Built with Angular 21 standalone components (no NgModules required)
 - 🎯 **Type-Safe**: Full TypeScript support with proper typing
 - ♿ **Accessible**: Built with accessibility in mind
 - 🎨 **Customizable**: Multiple variants and sizes for each component
@@ -181,9 +181,9 @@ export class ExampleComponent {
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
+- Node.js (v18.19.1, v20.11.1, or v22+)
 - npm (v9 or higher)
-- Angular CLI 16
+- Angular CLI 21
 
 ### Setup
 
@@ -204,6 +204,18 @@ npm run build
 ```
 
 The built library will be in the `dist/ui-kit` directory.
+
+### Sandbox (local preview)
+
+Run the sandbox app to preview components in the browser:
+
+```bash
+npm start
+```
+
+This builds the library, clears the Angular cache, and serves the sandbox at **http://localhost:4200**. The sandbox has a left sidebar listing components (with a filter) and a main area showing each component’s showcase.
+
+**Proxy:** API requests to `/api` are proxied to `http://localhost:3000` by default. Edit `proxy.conf.json` to change the `target` (e.g. to your backend URL).
 
 ### Running Tests
 
