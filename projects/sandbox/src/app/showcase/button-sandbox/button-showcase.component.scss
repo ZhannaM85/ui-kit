@@ -35,10 +35,34 @@
   position: relative;
 }
 
-.usage-copy {
+.usage-copy-wrap {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.usage-copied-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #059669;
+  animation: usage-copied-fade 0.2s ease-out;
+}
+
+@keyframes usage-copied-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.usage-copy {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,6 +81,12 @@
     color: #374151;
     border-color: #d1d5db;
   }
+
+  &.usage-copy--success {
+    border-color: #059669;
+    background: #ecfdf5;
+    color: #059669;
+  }
 }
 
 .usage-copy-icon {
@@ -66,7 +96,7 @@
 .usage-example {
   margin: 0;
   padding: 1rem 1.25rem;
-  padding-right: 3rem;
+  padding-right: 5rem;
   background: #f9fafb;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
