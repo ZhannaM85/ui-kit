@@ -7,13 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./checkbox-showcase.component.scss'],
 })
 export class CheckboxShowcaseComponent {
-  usageCode = `<lib-checkbox
+  usageCode = `<kit-checkbox
   label="Accept terms and conditions"
   [checked]="checked"
   [disabled]="false"
   [indeterminate]="false"
   (checkedChange)="onCheckedChange($event)"
-></lib-checkbox>`;
+></kit-checkbox>`;
 
   checked = false;
   copied = false;

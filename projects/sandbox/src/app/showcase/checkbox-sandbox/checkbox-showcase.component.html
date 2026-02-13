@@ -7,7 +7,7 @@
     <div class="usage-block">
       <div class="usage-copy-wrap">
         <span *ngIf="copied" class="usage-copied-label">Copied!</span>
-        <button type="button" class="usage-copy" [class.usage-copy--success]="copied" (click)="copyUsageCode()" [title]="copied ? 'Copied!' : 'Copy code'">
+        <button type="button" class="usage-copy" [class.usage-copy--success]="copied" (buttonClicked)="copyUsageCode()" [title]="copied ? 'Copied!' : 'Copy code'">
           <svg *ngIf="copied" class="usage-copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M20 6L9 17l-5-5"/>
           </svg>
@@ -17,34 +17,34 @@
           </svg>
         </button>
       </div>
-      <pre class="usage-example"><code>&lt;lib-checkbox
+      <pre class="usage-example"><code>&lt;kit-checkbox
   label="Accept terms and conditions"
   [checked]="checked"
   [disabled]="false"
   [indeterminate]="false"
   (checkedChange)="onCheckedChange($event)"
-&gt;&lt;/lib-checkbox&gt;</code></pre>
+&gt;&lt;/kit-checkbox&gt;</code></pre>
     </div>
   </section>
 
   <section class="showcase-section">
     <h3>Basic</h3>
-    <lib-checkbox
+    <kit-checkbox
       label="Accept terms and conditions"
       [checked]="checked"
       (checkedChange)="checked = $event"
-    ></lib-checkbox>
+    ></kit-checkbox>
     <p class="result">Checked: {{ checked }}</p>
   </section>
 
   <section class="showcase-section">
     <h3>Disabled</h3>
-    <lib-checkbox label="Disabled unchecked" [disabled]="true"></lib-checkbox>
-    <lib-checkbox label="Disabled checked" [checked]="true" [disabled]="true"></lib-checkbox>
+    <kit-checkbox label="Disabled unchecked" [disabled]="true"></kit-checkbox>
+    <kit-checkbox label="Disabled checked" [checked]="true" [disabled]="true"></kit-checkbox>
   </section>
 
   <section class="showcase-section">
     <h3>Indeterminate</h3>
-    <lib-checkbox label="Indeterminate state" [indeterminate]="true"></lib-checkbox>
+    <kit-checkbox label="Indeterminate state" [indeterminate]="true"></kit-checkbox>
   </section>
 </div>

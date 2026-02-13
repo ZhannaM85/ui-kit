@@ -6,7 +6,7 @@ export interface DropdownOption {
 }
 
 @Component({
-  selector: 'lib-dropdown',
+  selector: 'kit-dropdown',
   standalone: false,
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss']

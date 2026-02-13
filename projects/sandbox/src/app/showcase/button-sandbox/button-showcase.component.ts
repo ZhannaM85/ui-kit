@@ -7,14 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./button-showcase.component.scss'],
 })
 export class ButtonShowcaseComponent {
-  usageCode = `<lib-button
+  usageCode = `<kit-button
   [label]="'My button label'"
   [variant]="'primary'"
   [disabled]="false"
   [type]="'submit'"
   [size]="'large'"
-  (click)="buttonClicked($event)"
-></lib-button>`;
+  (buttonClicked)="buttonClicked($event)"
+></kit-button>`;
 
   copied = false;
 

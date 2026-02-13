@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'lib-checkbox',
+  selector: 'kit-checkbox',
   standalone: false,
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss']

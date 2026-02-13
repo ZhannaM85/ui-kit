@@ -8,12 +8,12 @@ import { DropdownOption } from '@Zhannam85/ui-kit';
   styleUrls: ['./dropdown-showcase.component.scss'],
 })
 export class DropdownShowcaseComponent {
-  usageCode = `<lib-dropdown
+  usageCode = `<kit-dropdown
   [options]="options"
   placeholder="Choose one"
   [selectedValue]="selectedValue"
   (selectionChange)="onSelectionChange($event)"
-></lib-dropdown>`;
+></kit-dropdown>`;
 
   options: DropdownOption[] = [
     { label: 'Option A', value: 'a' },
