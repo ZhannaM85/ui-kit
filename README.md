@@ -1,11 +1,11 @@
 # Angular UI Kit
 
-A modern, reusable Angular 16 UI component library featuring Button, Dropdown, and Checkbox components. Built with standalone components and designed for easy integration into Angular applications.
+A modern, reusable Angular 21 UI component library featuring Button, Dropdown, and Checkbox components. Built with standalone components and designed for easy integration into Angular applications.
 
 ## Features
 
 - 🎨 **Modern Design**: Clean, polished UI components with smooth animations
-- 📦 **Standalone Components**: Built with Angular 16 standalone components (no NgModules required)
+- 📦 **Standalone Components**: Built with Angular 21 standalone components (no NgModules required)
 - 🎯 **Type-Safe**: Full TypeScript support with proper typing
 - ♿ **Accessible**: Built with accessibility in mind
 - 🎨 **Customizable**: Multiple variants and sizes for each component
@@ -181,9 +181,9 @@ export class ExampleComponent {
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
+- Node.js (v18.19.1, v20.11.1, or v22+)
 - npm (v9 or higher)
-- Angular CLI 16
+- Angular CLI 21
 
 ### Setup
 
