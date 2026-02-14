@@ -7,7 +7,7 @@
         <div class="usage-block">
             <div class="usage-copy-wrap">
                 <span *ngIf="copied" class="usage-copied-label">Copied!</span>
-                <button type="button" class="usage-copy" [class.usage-copy--success]="copied" (buttonClicked)="copyUsageCode()" [title]="copied ? 'Copied!' : 'Copy code'">
+                <button type="button" class="usage-copy" [class.usage-copy--success]="copied" (click)="copyUsageCode()" [title]="copied ? 'Copied!' : 'Copy code'">
                     <svg *ngIf="copied" class="usage-copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M20 6L9 17l-5-5"/>
                     </svg>

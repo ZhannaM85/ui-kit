@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ClipboardService } from '../../services/clipboard.service';
 
 @Component({
     selector: 'app-checkbox-showcase',
@@ -19,9 +20,11 @@ export class CheckboxShowcaseComponent {
 
     public copied = false;
 
+    constructor(private readonly clipboard: ClipboardService) {}
+
     public copyUsageCode(): void {
-        navigator.clipboard.writeText(this.usageCode).then(() => {
-            this.copied = true;
+        this.copied = true;
+        this.clipboard.copy(this.usageCode).then(() => {
             setTimeout(() => (this.copied = false), 2000);
         });
     }

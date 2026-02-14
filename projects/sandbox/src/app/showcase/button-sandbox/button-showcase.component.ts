@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ClipboardService } from '../../services/clipboard.service';
 
 @Component({
     selector: 'app-button-showcase',
@@ -18,13 +19,15 @@ export class ButtonShowcaseComponent {
 
     public copied = false;
 
+    constructor(private readonly clipboard: ClipboardService) {}
+
     public onClick(event: MouseEvent): void {
         console.log('Button clicked', event);
     }
 
     public copyUsageCode(): void {
-        navigator.clipboard.writeText(this.usageCode).then(() => {
-            this.copied = true;
+        this.copied = true;
+        this.clipboard.copy(this.usageCode).then(() => {
             setTimeout(() => (this.copied = false), 2000);
         });
     }
