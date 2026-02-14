@@ -15,8 +15,8 @@
                 [class.install-copy--success]="copied"
                 (click)="copyCommand()"
                 [title]="copied ? 'Copied!' : 'Copy'">
-                <span *ngIf="copied">&#10003;</span>
-                <span *ngIf="!copied">&#9776;</span>
+                <kit-icon-check *ngIf="copied" [size]="14"></kit-icon-check>
+                <kit-icon-copy *ngIf="!copied" [size]="14"></kit-icon-copy>
             </button>
         </div>
     </section>
