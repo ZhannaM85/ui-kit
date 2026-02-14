@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DropdownModule } from '@Zhannam85/ui-kit';
+import { DropdownModule, IconModule } from '@Zhannam85/ui-kit';
 
 import { DropdownShowcaseComponent } from './dropdown-showcase.component';
 
@@ -15,6 +15,7 @@ const routes: Routes = [
     imports: [
         CommonModule,
         DropdownModule,
+        IconModule,
         RouterModule.forChild(routes),
     ],
 })

@@ -177,6 +177,90 @@ export class ExampleComponent {
 |-------|------|-------------|
 | `checkedChange` | `EventEmitter<boolean>` | Emitted when checked state changes |
 
+### Icon Components
+
+Reusable SVG icon components with customizable size and color.
+
+#### Available icons
+
+| Component | Selector | Default size | Description |
+|-----------|----------|-------------|-------------|
+| `IconCopyComponent` | `kit-icon-copy` | 16 | Clipboard / copy |
+| `IconCheckComponent` | `kit-icon-check` | 16 | Checkmark |
+| `IconChevronDownComponent` | `kit-icon-chevron-down` | 12 | Chevron arrow |
+
+#### Usage
+
+```typescript
+import { IconModule } from '@ZhannaM85/ui-kit';
+```
+
+```html
+<kit-icon-copy [size]="16" color="#333"></kit-icon-copy>
+<kit-icon-check [size]="20"></kit-icon-check>
+<kit-icon-chevron-down [size]="12"></kit-icon-chevron-down>
+```
+
+#### Inputs (shared by all icons)
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `size` | `number` | varies per icon | Width and height in pixels |
+| `color` | `string` | `'currentColor'` | Stroke/fill color (inherits text color by default) |
+
+#### Adding a new icon
+
+1. Create a new file in `src/components/icon/`, e.g. `icon-arrow-right.component.ts`:
+
+```typescript
+import { Component } from '@angular/core';
+import { BaseIconComponent } from './base-icon.component';
+
+@Component({
+    selector: 'kit-icon-arrow-right',
+    standalone: false,
+    template: `
+        <svg
+            [attr.width]="size"
+            [attr.height]="size"
+            viewBox="0 0 24 24"
+            fill="none"
+            [attr.stroke]="color"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    `,
+})
+export class IconArrowRightComponent extends BaseIconComponent {
+    override size = 16;
+}
+```
+
+2. Register the component in `src/components/icon/icon.module.ts`:
+
+```typescript
+import { IconArrowRightComponent } from './icon-arrow-right.component';
+
+const ICON_COMPONENTS = [
+    // ...existing icons
+    IconArrowRightComponent,
+];
+```
+
+3. Export it from `src/public-api.ts`:
+
+```typescript
+export * from './components/icon/icon-arrow-right.component';
+```
+
+4. Rebuild the library (`npm run build`) and use it:
+
+```html
+<kit-icon-arrow-right [size]="20" color="blue"></kit-icon-arrow-right>
+```
+
 ## Development
 
 ### Prerequisites
