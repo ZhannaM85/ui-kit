@@ -14,10 +14,10 @@ A modern, reusable Angular 21 UI component library featuring Button, Dropdown, a
 ## Installation
 
 ```bash
-npm install @yourname/ui-kit
+npm install @ZhannaM85/ui-kit
 ```
 
-**Note**: Replace `@yourname` with your npm username or organization name before publishing.
+**Note**: Replace `@ZhannaM85` with your npm username or organization name before publishing.
 
 ## Components
 
@@ -28,7 +28,7 @@ A versatile button component with multiple variants and sizes.
 #### Usage
 
 ```typescript
-import { ButtonComponent } from '@yourname/ui-kit';
+import { ButtonComponent } from '@ZhannaM85/ui-kit';
 import { Component } from '@angular/core';
 
 @Component({
@@ -74,7 +74,7 @@ A dropdown/select component with customizable options.
 #### Usage
 
 ```typescript
-import { DropdownComponent, DropdownOption } from '@yourname/ui-kit';
+import { DropdownComponent, DropdownOption } from '@ZhannaM85/ui-kit';
 import { Component } from '@angular/core';
 
 @Component({
@@ -137,7 +137,7 @@ A checkbox component with label support and indeterminate state.
 #### Usage
 
 ```typescript
-import { CheckboxComponent } from '@yourname/ui-kit';
+import { CheckboxComponent } from '@ZhannaM85/ui-kit';
 import { Component } from '@angular/core';
 
 @Component({
@@ -258,7 +258,7 @@ After installing the package:
 
 1. Import the components in your Angular component:
 ```typescript
-import { ButtonComponent, DropdownComponent, CheckboxComponent } from '@yourname/ui-kit';
+import { ButtonComponent, DropdownComponent, CheckboxComponent } from '@ZhannaM85/ui-kit';
 ```
 
 2. Add them to your component's `imports` array (standalone components):
