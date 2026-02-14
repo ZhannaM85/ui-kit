@@ -1,15 +1,15 @@
 <label
-  class="lib-checkbox"
-  [class.lib-checkbox--disabled]="disabled"
-  [attr.for]="getCheckboxId()">
-  <input
-    type="checkbox"
-    [id]="getCheckboxId()"
-    class="lib-checkbox__input"
-    [checked]="checked"
-    [indeterminate]="indeterminate"
-    [disabled]="disabled"
-    (change)="onCheckboxChange($event)">
-  <span class="lib-checkbox__checkmark"></span>
-  <span class="lib-checkbox__label" *ngIf="label">{{ label }}</span>
+    class="lib-checkbox"
+    [class.lib-checkbox--disabled]="disabled"
+    [attr.for]="checkboxId">
+    <input
+        type="checkbox"
+        [id]="checkboxId"
+        class="lib-checkbox__input"
+        [checked]="checked"
+        [indeterminate]="indeterminate"
+        [disabled]="disabled"
+        (change)="onCheckboxChange($event)">
+    <span class="lib-checkbox__checkmark"></span>
+    <span class="lib-checkbox__label" *ngIf="label">{{ label }}</span>
 </label>
