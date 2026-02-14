@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DropdownOption } from '@Zhannam85/ui-kit';
+import { ClipboardService } from '../../services/clipboard.service';
 
 @Component({
     selector: 'app-dropdown-showcase',
@@ -26,29 +27,12 @@ export class DropdownShowcaseComponent {
 
     public copied = false;
 
+    constructor(private readonly clipboard: ClipboardService) {}
+
     public copyUsageCode(): void {
         this.copied = true;
-
-        this.copyToClipboard(this.usageCode).then(() => {
+        this.clipboard.copy(this.usageCode).then(() => {
             setTimeout(() => (this.copied = false), 2000);
         });
-    }
-
-    private copyToClipboard(text: string): Promise<void> {
-        if (navigator.clipboard?.writeText) {
-            return navigator.clipboard.writeText(text).catch(() => this.fallbackCopy(text));
-        }
-        return Promise.resolve(this.fallbackCopy(text));
-    }
-
-    private fallbackCopy(text: string): void {
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
     }
 }
