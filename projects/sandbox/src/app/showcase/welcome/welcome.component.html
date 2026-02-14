@@ -1,0 +1,30 @@
+<div class="welcome">
+    <h1 class="welcome-title">UI Kit</h1>
+    <p class="welcome-desc">
+        A modern Angular component library with ready-to-use UI components
+        like Button, Dropdown, and Checkbox.
+    </p>
+
+    <section class="welcome-section">
+        <h3>Installation</h3>
+        <div class="install-block">
+            <code class="install-command">{{ installCommand }}</code>
+            <button
+                type="button"
+                class="install-copy"
+                [class.install-copy--success]="copied"
+                (click)="copyCommand()"
+                [title]="copied ? 'Copied!' : 'Copy'">
+                <span *ngIf="copied">&#10003;</span>
+                <span *ngIf="!copied">&#9776;</span>
+            </button>
+        </div>
+    </section>
+
+    <section class="welcome-section">
+        <h3>Getting started</h3>
+        <p class="welcome-text">
+            Pick a component from the sidebar to see live examples, usage code, and available options.
+        </p>
+    </section>
+</div>
