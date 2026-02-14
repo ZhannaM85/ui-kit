@@ -1,5 +1,6 @@
+/* eslint-disable @angular-eslint/prefer-inject */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, EventEmitter, HostListener, Input, Output, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, OnInit } from '@angular/core';
 
 export interface DropdownOption {
     label: string;
@@ -12,9 +13,17 @@ export interface DropdownOption {
     templateUrl: './dropdown.component.html',
     styleUrls: ['./dropdown.component.scss']
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent implements OnInit, OnDestroy {
     private _options: DropdownOption[] = [];
+
     private _selectedValue: any = null;
+
+    private onDocumentClick = (event: Event): void => {
+        const target = event.target as HTMLElement;
+        if (!this.elementRef.nativeElement.contains(target)) {
+            this.isOpen = false;
+        }
+    };
 
     @Input() public set options(value: DropdownOption[]) {
         this._options = value ?? [];
@@ -44,8 +53,15 @@ export class DropdownComponent implements OnInit {
 
     public selectedOption: DropdownOption | null = null;
 
+    constructor(private elementRef: ElementRef) {}
+
     public ngOnInit(): void {
         this.updateSelectedOption();
+        document.addEventListener('click', this.onDocumentClick);
+    }
+
+    public ngOnDestroy(): void {
+        document.removeEventListener('click', this.onDocumentClick);
     }
 
     private updateSelectedOption(): void {
@@ -82,14 +98,6 @@ export class DropdownComponent implements OnInit {
             this._selectedValue = option.value;
             this.isOpen = false;
             this.selectionChange.emit(option.value);
-        }
-    }
-
-  @HostListener('document:click', ['$event'])
-    public onClickOutside(event: Event): void {
-        const target = event.target as HTMLElement;
-        if (!target.closest('.lib-dropdown')) {
-            this.isOpen = false;
         }
     }
 }
