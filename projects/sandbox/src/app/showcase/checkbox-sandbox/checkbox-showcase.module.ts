@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CheckboxModule, IconModule } from '@Zhannam85/ui-kit';
+import { CheckboxModule, IconModule } from '@zhannam85/ui-kit';
 
 import { CheckboxShowcaseComponent } from './checkbox-showcase.component';
 

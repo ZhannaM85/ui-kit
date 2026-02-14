@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./welcome.component.scss'],
 })
 export class WelcomeComponent {
-    public installCommand = 'npm install @Zhannam85/ui-kit';
+    public installCommand = 'npm install @zhannam85/ui-kit';
     public copied = false;
 
     public copyCommand(): void {
