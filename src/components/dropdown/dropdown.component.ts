@@ -1,4 +1,5 @@
-/* eslint-disable */
+/* eslint-disable @angular-eslint/prefer-inject */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, OnInit } from '@angular/core';
 
 export interface DropdownOption {
@@ -14,7 +15,9 @@ export interface DropdownOption {
 })
 export class DropdownComponent implements OnInit, OnDestroy {
     private _options: DropdownOption[] = [];
+
     private _selectedValue: any = null;
+
     private onDocumentClick = (event: Event): void => {
         const target = event.target as HTMLElement;
         if (!this.elementRef.nativeElement.contains(target)) {

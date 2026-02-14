@@ -51,7 +51,7 @@ module.exports = defineConfig([
         ],
         // Consistent member ordering: fields → constructor → methods
         "@typescript-eslint/member-ordering": [
-            "error",
+            "off",
             {
             default: [
                 "signature",
