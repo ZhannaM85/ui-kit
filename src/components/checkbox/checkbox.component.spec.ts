@@ -7,7 +7,7 @@ describe('CheckboxComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [CheckboxComponent]
+            declarations: [CheckboxComponent]
         }).compileComponents();
 
         fixture = TestBed.createComponent(CheckboxComponent);
@@ -61,7 +61,7 @@ describe('CheckboxComponent', () => {
     });
 
     it('should emit checkedChange when checkbox is clicked', () => {
-        spyOn(component.checkedChange, 'emit');
+        jest.spyOn(component.checkedChange, 'emit');
         component.checked = false;
         component.disabled = false;
         fixture.detectChanges();
@@ -74,7 +74,7 @@ describe('CheckboxComponent', () => {
     });
 
     it('should not emit checkedChange when disabled', () => {
-        spyOn(component.checkedChange, 'emit');
+        jest.spyOn(component.checkedChange, 'emit');
         component.disabled = true;
         fixture.detectChanges();
 
@@ -110,12 +110,12 @@ describe('CheckboxComponent', () => {
         expect(component.checked).toBe(true);
     });
 
-    it('should generate unique checkbox IDs', () => {
-        const id1 = component.getCheckboxId();
-        const id2 = component.getCheckboxId();
+    it('should have a stable unique checkbox ID per instance', () => {
+        const id1 = component.checkboxId;
+        const id2 = component.checkboxId;
 
         expect(id1).toBeTruthy();
-        expect(id2).toBeTruthy();
-        expect(id1).not.toBe(id2);
+        expect(id2).toBe(id1);
+        expect(id1).toMatch(/^kit-checkbox-[a-z0-9]+$/);
     });
 });

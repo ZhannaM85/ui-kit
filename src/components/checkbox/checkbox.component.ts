@@ -17,6 +17,9 @@ export class CheckboxComponent {
 
   @Output() public checkedChange = new EventEmitter<boolean>();
 
+  /** Stable id for the input (generated once per component instance to avoid NG0100). */
+  public readonly checkboxId = `kit-checkbox-${Math.random().toString(36).substring(2, 11)}`;
+
   public onCheckboxChange(event: Event): void {
       if (!this.disabled) {
           const target = event.target as HTMLInputElement;
@@ -24,9 +27,5 @@ export class CheckboxComponent {
           this.indeterminate = false; // Clear indeterminate state when user interacts
           this.checkedChange.emit(this.checked);
       }
-  }
-
-  public getCheckboxId(): string {
-      return `kit-checkbox-${Math.random().toString(36).substr(2, 9)}`;
   }
 }

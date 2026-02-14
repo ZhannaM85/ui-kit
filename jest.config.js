@@ -3,7 +3,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
   testMatch: ['**/+(*.)+(spec).+(ts)'],
   collectCoverage: true,
-  coverageReporters: ['html', 'text-summary'],
+  coverageReporters: ['html', 'text', 'text-summary'],
   coverageDirectory: 'coverage',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [

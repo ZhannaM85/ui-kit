@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
 import { DropdownComponent, DropdownOption } from './dropdown.component';
 
 describe('DropdownComponent', () => {
@@ -13,7 +14,8 @@ describe('DropdownComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [DropdownComponent]
+            declarations: [DropdownComponent],
+            imports: [CommonModule]
         }).compileComponents();
 
         fixture = TestBed.createComponent(DropdownComponent);
@@ -65,7 +67,7 @@ describe('DropdownComponent', () => {
     });
 
     it('should emit selectionChange when option is selected', () => {
-        spyOn(component.selectionChange, 'emit');
+        jest.spyOn(component.selectionChange, 'emit');
 
         component.isOpen = true;
         fixture.detectChanges();
