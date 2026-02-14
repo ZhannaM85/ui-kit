@@ -3,6 +3,24 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
+.sidebar-home {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  transition: color 0.15s;
+
+  &:hover {
+    color: #7b2ff7;
+  }
+
+  &.active {
+    color: #7b2ff7;
+  }
+}
+
 .sidebar-title {
   margin: 0 0 0.75rem 0;
   font-size: 1.125rem;

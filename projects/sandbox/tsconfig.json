@@ -5,8 +5,8 @@
     "types": [],
     "baseUrl": "../../",
     "paths": {
-      "@Zhannam85/ui-kit": ["dist/ui-kit"],
-      "@Zhannam85/ui-kit/*": ["dist/ui-kit/*"]
+      "@zhannam85/ui-kit": ["dist/ui-kit"],
+      "@zhannam85/ui-kit/*": ["dist/ui-kit/*"]
     }
   },
   "include": ["src/**/*.ts"]
