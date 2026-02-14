@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DropdownOption } from '@Zhannam85/ui-kit';
+import { DropdownOption } from '@zhannam85/ui-kit';
 import { ClipboardService } from '../../services/clipboard.service';
 
 @Component({
