@@ -1,8 +1,14 @@
+@use '../../styles/breakpoints' as *;
+
 .lib-dropdown {
   position: relative;
   display: inline-block;
   width: 100%;
   min-width: 200px;
+
+  @include small {
+    min-width: 0;
+  }
 
   &--disabled {
     opacity: 0.6;
@@ -21,6 +27,10 @@
     transition: all 0.2s ease-in-out;
     min-height: 40px;
     user-select: none;
+
+    @include mobile {
+      min-height: 44px;
+    }
 
     &:hover:not(.lib-dropdown__trigger--disabled) {
       border-color: #4a90e2;

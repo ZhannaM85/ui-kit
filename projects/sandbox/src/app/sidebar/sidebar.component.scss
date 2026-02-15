@@ -1,6 +1,12 @@
+@use '../../../../../src/styles/breakpoints' as *;
+
 .sidebar-header {
   padding: 1.25rem;
   border-bottom: 1px solid #e5e7eb;
+
+  @include mobile {
+    padding: 1rem;
+  }
 }
 
 .sidebar-home {
@@ -62,6 +68,11 @@
   text-decoration: none;
   border-radius: 6px;
   transition: background 0.15s, color 0.15s;
+
+  @include mobile {
+    padding: 0.625rem 0.75rem;
+    font-size: 1rem;
+  }
 
   &:hover {
     background: #f3f4f6;

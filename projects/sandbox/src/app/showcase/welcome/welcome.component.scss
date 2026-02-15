@@ -1,3 +1,5 @@
+@use '../../../../../../src/styles/breakpoints' as *;
+
 .welcome {
     max-width: 640px;
 }
@@ -6,6 +8,10 @@
     font-size: 2rem;
     margin: 0 0 0.5rem 0;
     color: #111827;
+
+    @include mobile {
+        font-size: 1.5rem;
+    }
 }
 
 .welcome-desc {
@@ -13,10 +19,19 @@
     font-size: 1.05rem;
     line-height: 1.6;
     margin: 0 0 2rem 0;
+
+    @include mobile {
+        font-size: 0.9375rem;
+        margin-bottom: 1.25rem;
+    }
 }
 
 .welcome-section {
     margin-bottom: 2rem;
+
+    @include mobile {
+        margin-bottom: 1.5rem;
+    }
 
     h3 {
         font-size: 1rem;
@@ -40,6 +55,10 @@
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     padding: 0.75rem 1rem;
+
+    @include mobile {
+        padding: 0.625rem 0.75rem;
+    }
 }
 
 .install-command {
@@ -48,6 +67,10 @@
     font-size: 0.95rem;
     color: #111827;
     user-select: all;
+
+    @include mobile {
+        font-size: 0.8125rem;
+    }
 }
 
 .install-copy {
