@@ -1,7 +1,30 @@
 <div class="layout">
-    <aside class="sidebar">
+    <button
+        class="mobile-menu-btn"
+        (click)="toggleSidebar()"
+        [attr.aria-expanded]="sidebarOpen"
+        aria-label="Toggle navigation"
+    >
+        <span class="hamburger" [class.hamburger--open]="sidebarOpen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    </button>
+
+    <div
+        class="sidebar-backdrop"
+        [class.sidebar-backdrop--visible]="sidebarOpen"
+        (click)="closeSidebar()"
+        (keydown.escape)="closeSidebar()"
+        tabindex="-1"
+        role="presentation"
+    ></div>
+
+    <aside class="sidebar" [class.sidebar--open]="sidebarOpen">
         <app-sidebar></app-sidebar>
     </aside>
+
     <main class="content">
         <router-outlet></router-outlet>
     </main>
