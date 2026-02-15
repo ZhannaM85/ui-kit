@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build UI Kit library
+        run: npm run build
+
       - name: Build sandbox app
         run: npx ng build sandbox --configuration production --base-href /ui-kit/
 
