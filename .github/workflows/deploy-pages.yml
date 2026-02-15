@@ -36,6 +36,25 @@ jobs:
       - name: Build sandbox app
         run: npx ng build sandbox --configuration production --base-href /ui-kit/
 
+      - name: Generate build.txt
+        run: |
+          node -e "
+            const pkg = require('./package.json');
+            const now = new Date().toISOString();
+            const deps = Object.entries(pkg.dependencies || {})
+              .map(([name, version]) => '  ' + name + ': ' + version)
+              .join('\n');
+            const content =
+              'Project: ' + pkg.name + '\n' +
+              'Version: ' + pkg.version + '\n' +
+              'Description: ' + (pkg.description || '') + '\n' +
+              '\n' +
+              'Dependencies:\n' + deps + '\n' +
+              '\n' +
+              'Deployed: ' + now + '\n';
+            require('fs').writeFileSync('dist/sandbox/browser/build.txt', content);
+          "
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
