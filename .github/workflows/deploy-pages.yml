@@ -36,6 +36,9 @@ jobs:
       - name: Build sandbox app
         run: npx ng build sandbox --configuration production --base-href /ui-kit/
 
+      - name: Copy index.html to 404.html for SPA routing
+        run: cp dist/sandbox/browser/index.html dist/sandbox/browser/404.html
+
       - name: Generate build.txt
         run: |
           node -e "
