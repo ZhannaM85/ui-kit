@@ -1,3 +1,5 @@
+@use '../../styles/breakpoints' as *;
+
 .lib-checkbox {
   display: inline-flex;
   align-items: center;
@@ -6,6 +8,10 @@
   position: relative;
   font-size: 16px;
   line-height: 1.5;
+
+  @include mobile {
+    min-height: 44px;
+  }
 
   &--disabled {
     opacity: 0.6;
