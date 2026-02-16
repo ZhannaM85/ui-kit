@@ -2,6 +2,10 @@
 
 A modern, reusable Angular 21 UI component library featuring Button, Dropdown, and Checkbox components. Built with standalone components and designed for easy integration into Angular applications.
 
+**Live demo:** [https://zhannam85.github.io/ui-kit](https://zhannam85.github.io/ui-kit)
+
+**npm package:** [@zhannam85/ui-kit](https://www.npmjs.com/package/@zhannam85/ui-kit)
+
 ## Features
 
 - 🎨 **Modern Design**: Clean, polished UI components with smooth animations
