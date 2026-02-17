@@ -20,5 +20,5 @@ import { BaseIconComponent } from './base-icon.component';
     `,
 })
 export class IconCloseComponent extends BaseIconComponent {
-    override size = 20;
+    public override size = 20;
 }
