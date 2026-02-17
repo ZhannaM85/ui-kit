@@ -1,0 +1,20 @@
+<div class="lib-input-wrapper">
+    <label *ngIf="label" class="lib-input-label">
+        {{ label }}
+        <span *ngIf="required" class="lib-input-required">*</span>
+    </label>
+    <input
+        class="lib-input"
+        [class.lib-input--error]="error"
+        [class.lib-input--disabled]="disabled"
+        [type]="type"
+        [placeholder]="placeholder"
+        [value]="value"
+        [disabled]="disabled"
+        [required]="required"
+        (input)="onInput($event)"
+        (blur)="onBlur($event)"
+    />
+    <span *ngIf="error" class="lib-input-error">{{ error }}</span>
+    <span *ngIf="hint && !error" class="lib-input-hint">{{ hint }}</span>
+</div>
