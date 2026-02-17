@@ -19,5 +19,5 @@ import { BaseIconComponent } from './base-icon.component';
     `,
 })
 export class IconChevronDownComponent extends BaseIconComponent {
-    override size = 12;
+    public override size = 12;
 }

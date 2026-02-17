@@ -1,0 +1,102 @@
+<div class="showcase">
+  <h1 class="showcase-title">Textarea</h1>
+  <p class="showcase-desc">Multi-line text input component with validation, error states, and accessibility support.</p>
+
+  <section class="showcase-section">
+    <h3>Usage</h3>
+    <div class="usage-block">
+      <div class="usage-copy-wrap">
+        <span *ngIf="copied" class="usage-copied-label">Copied!</span>
+        <button type="button" class="usage-copy" [class.usage-copy--success]="copied" (click)="copyUsageCode()" [title]="copied ? 'Copied!' : 'Copy code'">
+          <kit-icon-check *ngIf="copied" class="usage-copy-icon" [size]="16"></kit-icon-check>
+          <kit-icon-copy *ngIf="!copied" class="usage-copy-icon" [size]="16"></kit-icon-copy>
+        </button>
+      </div>
+      <pre class="usage-example"><code>&lt;kit-textarea
+  label="Description"
+  placeholder="Enter a description"
+  [rows]="4"
+  [required]="true"
+  [error]="error"
+  [hint]="hint"
+  [disabled]="false"
+  (valueChange)="onValueChange($event)"
+  (blurred)="onBlurred($event)"
+&gt;&lt;/kit-textarea&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>Basic Textarea</h3>
+    <div class="row">
+      <kit-textarea
+        label="Comments"
+        placeholder="Enter your comments"
+        [rows]="4">
+      </kit-textarea>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>Rows</h3>
+    <div class="row column">
+      <kit-textarea
+        label="Small (2 rows)"
+        placeholder="Small textarea"
+        [rows]="2">
+      </kit-textarea>
+      <kit-textarea
+        label="Medium (4 rows)"
+        placeholder="Medium textarea"
+        [rows]="4">
+      </kit-textarea>
+      <kit-textarea
+        label="Large (8 rows)"
+        placeholder="Large textarea"
+        [rows]="8">
+      </kit-textarea>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>States</h3>
+    <div class="row column">
+      <kit-textarea
+        label="With Error"
+        placeholder="This field has an error"
+        error="This field is required"
+        [rows]="4">
+      </kit-textarea>
+      <kit-textarea
+        label="With Hint"
+        placeholder="Enter your message"
+        hint="Minimum 10 characters required"
+        [rows]="4">
+      </kit-textarea>
+      <kit-textarea
+        label="Disabled"
+        placeholder="Cannot edit this"
+        [disabled]="true"
+        [(ngModel)]="disabledValue"
+        [rows]="4">
+      </kit-textarea>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>Interactive Example</h3>
+    <div class="row column">
+      <kit-textarea
+        label="Description"
+        placeholder="Enter a description (minimum 10 characters)"
+        [rows]="4"
+        [required]="true"
+        [error]="error"
+        [hint]="hint"
+        (valueChange)="onValueChange($event)"
+        (blurred)="onBlurred($event)">
+      </kit-textarea>
+      <p *ngIf="textareaValue" class="showcase-desc">Current value length: <strong>{{ textareaValue.length }}</strong> characters</p>
+    </div>
+  </section>
+</div>

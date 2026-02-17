@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BaseIconComponent } from './base-icon.component';
 
 @Component({
-    selector: 'kit-icon-copy',
+    selector: 'kit-icon-close',
     standalone: false,
     template: `
         <svg
@@ -14,11 +14,11 @@ import { BaseIconComponent } from './base-icon.component';
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round">
-            <rect x="9" y="9" width="13" height="13" rx="2"/>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
     `,
 })
-export class IconCopyComponent extends BaseIconComponent {
-    public override size = 16;
+export class IconCloseComponent extends BaseIconComponent {
+    public override size = 20;
 }
