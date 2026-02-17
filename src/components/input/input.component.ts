@@ -38,7 +38,6 @@ export class InputComponent implements ControlValueAccessor {
 
     public inputId = `kit-input-${Math.random().toString(36).substring(2, 9)}`;
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private onChange = (_: string): void => {
         // Placeholder - will be replaced by Angular forms via registerOnChange
     };
