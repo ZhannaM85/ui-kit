@@ -12,6 +12,7 @@ export * from './components/icon/base-icon.component';
 export * from './components/icon/icon-copy.component';
 export * from './components/icon/icon-check.component';
 export * from './components/icon/icon-chevron-down.component';
+export * from './components/icon/icon-close.component';
 export * from './components/icon/icon.module';
 export * from './components/input/input.component';
 export * from './components/input/input.module';
