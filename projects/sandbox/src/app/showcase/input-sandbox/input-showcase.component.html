@@ -1,0 +1,106 @@
+<div class="showcase">
+  <h1 class="showcase-title">Input</h1>
+  <p class="showcase-desc">Text input component with validation, error states, and accessibility support.</p>
+
+  <section class="showcase-section">
+    <h3>Usage</h3>
+    <div class="usage-block">
+      <div class="usage-copy-wrap">
+        <span *ngIf="copied" class="usage-copied-label">Copied!</span>
+        <button type="button" class="usage-copy" [class.usage-copy--success]="copied" (click)="copyUsageCode()" [title]="copied ? 'Copied!' : 'Copy code'">
+          <kit-icon-check *ngIf="copied" class="usage-copy-icon" [size]="16"></kit-icon-check>
+          <kit-icon-copy *ngIf="!copied" class="usage-copy-icon" [size]="16"></kit-icon-copy>
+        </button>
+      </div>
+      <pre class="usage-example"><code>&lt;kit-input
+  label="Email Address"
+  placeholder="Enter your email"
+  type="email"
+  [required]="true"
+  [error]="error"
+  [hint]="hint"
+  [disabled]="false"
+  (valueChange)="onValueChange($event)"
+  (blurred)="onBlurred($event)"
+&gt;&lt;/kit-input&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>Basic Input</h3>
+    <div class="row">
+      <kit-input
+        label="Name"
+        placeholder="Enter your name"
+        [required]="true">
+      </kit-input>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>Input Types</h3>
+    <div class="row column">
+      <kit-input
+        label="Email"
+        type="email"
+        placeholder="user@example.com"
+        [required]="true">
+      </kit-input>
+      <kit-input
+        label="Password"
+        type="password"
+        placeholder="Enter password"
+        [required]="true">
+      </kit-input>
+      <kit-input
+        label="Phone"
+        type="tel"
+        placeholder="+1 (555) 123-4567">
+      </kit-input>
+      <kit-input
+        label="Number"
+        type="number"
+        placeholder="Enter a number">
+      </kit-input>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>States</h3>
+    <div class="row column">
+      <kit-input
+        label="With Error"
+        placeholder="This field has an error"
+        error="This field is required">
+      </kit-input>
+      <kit-input
+        label="With Hint"
+        placeholder="Enter your username"
+        hint="Username must be at least 3 characters">
+      </kit-input>
+      <kit-input
+        label="Disabled"
+        placeholder="Cannot edit this"
+        [disabled]="true"
+        [(ngModel)]="disabledValue">
+      </kit-input>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>Interactive Example</h3>
+    <div class="row column">
+      <kit-input
+        label="Email Address"
+        type="email"
+        placeholder="Enter your email"
+        [required]="true"
+        [error]="error"
+        [hint]="hint"
+        (valueChange)="onValueChange($event)"
+        (blurred)="onBlurred($event)">
+      </kit-input>
+      <p *ngIf="inputValue" class="showcase-desc">Current value: <strong>{{ inputValue }}</strong></p>
+    </div>
+  </section>
+</div>

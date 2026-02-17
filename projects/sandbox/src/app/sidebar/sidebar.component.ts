@@ -10,6 +10,8 @@ const COMPONENTS: NavItem[] = [
     { name: 'Button', path: 'button', label: 'Button' },
     { name: 'Dropdown', path: 'dropdown', label: 'Dropdown' },
     { name: 'Checkbox', path: 'checkbox', label: 'Checkbox' },
+    { name: 'Input', path: 'input', label: 'Input' },
+    { name: 'Textarea', path: 'textarea', label: 'Textarea' },
 ];
 
 @Component({
