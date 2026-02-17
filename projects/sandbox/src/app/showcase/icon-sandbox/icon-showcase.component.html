@@ -1,0 +1,79 @@
+<div class="showcase">
+  <h1 class="showcase-title">Icons</h1>
+  <p class="showcase-desc">Icon components with configurable size and color. Use <code>currentColor</code> to inherit text color.</p>
+
+  <section class="showcase-section">
+    <h3>Usage</h3>
+    <div class="usage-block">
+      <div class="usage-copy-wrap">
+        <span *ngIf="copied" class="usage-copied-label">Copied!</span>
+        <button type="button" class="usage-copy" [class.usage-copy--success]="copied" (click)="copyUsageCode()" [title]="copied ? 'Copied!' : 'Copy code'">
+          <kit-icon-check *ngIf="copied" class="usage-copy-icon" [size]="16"></kit-icon-check>
+          <kit-icon-copy *ngIf="!copied" class="usage-copy-icon" [size]="16"></kit-icon-copy>
+        </button>
+      </div>
+      <pre class="usage-example"><code>&lt;kit-icon-copy [size]="24" [color]="'currentColor'"&gt;&lt;/kit-icon-copy&gt;</code></pre>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>Icon set</h3>
+    <div class="icon-grid">
+      <div class="icon-card">
+        <kit-icon-copy [size]="size" class="icon-preview"></kit-icon-copy>
+        <span class="icon-name">kit-icon-copy</span>
+      </div>
+      <div class="icon-card">
+        <kit-icon-check [size]="size" class="icon-preview"></kit-icon-check>
+        <span class="icon-name">kit-icon-check</span>
+      </div>
+      <div class="icon-card">
+        <kit-icon-chevron-down [size]="size" class="icon-preview"></kit-icon-chevron-down>
+        <span class="icon-name">kit-icon-chevron-down</span>
+      </div>
+      <div class="icon-card">
+        <kit-icon-close [size]="size" class="icon-preview"></kit-icon-close>
+        <span class="icon-name">kit-icon-close</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>Size</h3>
+    <p class="showcase-desc">Control size via the <code>size</code> input (pixels).</p>
+    <div class="row align-center">
+      <label class="size-label" for="icon-size">Size:</label>
+      <input id="icon-size" type="range" min="12" max="48" [(ngModel)]="size" class="size-slider" />
+      <span class="size-value">{{ size }}px</span>
+    </div>
+    <div class="row icon-size-demo">
+      <kit-icon-copy [size]="size"></kit-icon-copy>
+      <kit-icon-check [size]="size"></kit-icon-check>
+      <kit-icon-chevron-down [size]="size"></kit-icon-chevron-down>
+      <kit-icon-close [size]="size"></kit-icon-close>
+    </div>
+  </section>
+
+  <section class="showcase-section">
+    <h3>Color</h3>
+    <p class="showcase-desc">Icons use <code>currentColor</code> by default, so they inherit the text color.</p>
+    <div class="row icon-color-demo">
+      <span class="icon-with-color icon-with-color--default">
+        <kit-icon-check [size]="24"></kit-icon-check>
+        Default
+      </span>
+      <span class="icon-with-color icon-with-color--primary">
+        <kit-icon-check [size]="24"></kit-icon-check>
+        Primary
+      </span>
+      <span class="icon-with-color icon-with-color--success">
+        <kit-icon-check [size]="24"></kit-icon-check>
+        Success
+      </span>
+      <span class="icon-with-color icon-with-color--danger">
+        <kit-icon-close [size]="24"></kit-icon-close>
+        Danger
+      </span>
+    </div>
+  </section>
+</div>
