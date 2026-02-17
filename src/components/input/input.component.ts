@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -35,9 +36,16 @@ export class InputComponent implements ControlValueAccessor {
 
     public value = '';
 
-    private onChange = (value: string): void => {};
+    public inputId = `kit-input-${Math.random().toString(36).substring(2, 9)}`;
 
-    private onTouched = (): void => {};
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    private onChange = (_: string): void => {
+        // Placeholder - will be replaced by Angular forms via registerOnChange
+    };
+
+    private onTouched = (): void => {
+        // Placeholder - will be replaced by Angular forms via registerOnTouched
+    };
 
     public onInput(event: Event): void {
         const input = event.target as HTMLInputElement;

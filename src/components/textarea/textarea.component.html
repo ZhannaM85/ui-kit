@@ -1,9 +1,10 @@
 <div class="lib-textarea-wrapper">
-    <label *ngIf="label" class="lib-textarea-label">
+    <label *ngIf="label" [for]="textareaId" class="lib-textarea-label">
         {{ label }}
         <span *ngIf="required" class="lib-textarea-required">*</span>
     </label>
     <textarea
+        [id]="textareaId"
         class="lib-textarea"
         [class.lib-textarea--error]="error"
         [class.lib-textarea--disabled]="disabled"

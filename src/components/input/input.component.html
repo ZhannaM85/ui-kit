@@ -1,9 +1,10 @@
 <div class="lib-input-wrapper">
-    <label *ngIf="label" class="lib-input-label">
+    <label *ngIf="label" [for]="inputId" class="lib-input-label">
         {{ label }}
         <span *ngIf="required" class="lib-input-required">*</span>
     </label>
     <input
+        [id]="inputId"
         class="lib-input"
         [class.lib-input--error]="error"
         [class.lib-input--disabled]="disabled"
