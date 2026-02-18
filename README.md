@@ -382,4 +382,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Version
 
-Current version: 0.1.6
+Current version: 0.1.7
