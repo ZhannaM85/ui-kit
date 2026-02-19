@@ -114,6 +114,12 @@
   flex-shrink: 0;
 }
 
+.cleared-label {
+  color: #059669;
+  font-weight: 500;
+  animation: usage-copied-fade 0.2s ease-out;
+}
+
 .usage-example {
   margin: 0;
   padding: 1rem 1.25rem;
