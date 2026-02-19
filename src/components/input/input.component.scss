@@ -19,6 +19,12 @@
     margin-left: 2px;
 }
 
+.lib-input-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .lib-input {
     width: 100%;
     padding: 10px 14px;
@@ -61,6 +67,34 @@
         color: #999;
         cursor: not-allowed;
         opacity: 0.6;
+    }
+
+    &--clearable {
+        padding-right: 36px;
+    }
+}
+
+.lib-input-clear {
+    position: absolute;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.06);
+    }
+
+    &:active {
+        background-color: rgba(0, 0, 0, 0.1);
     }
 }
 

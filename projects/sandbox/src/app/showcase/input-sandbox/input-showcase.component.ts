@@ -22,6 +22,8 @@ export class InputShowcaseComponent {
 
     public inputValue = '';
     public disabledValue = 'Disabled value';
+    public clearableValue = '';
+    public wasCleared = false;
     public error = '';
     public hint = '';
     public copied = false;
@@ -46,6 +48,17 @@ export class InputShowcaseComponent {
             this.error = '';
             this.hint = value ? 'Looks good!' : '';
         }
+    }
+
+    public onClearableValueChange(value: string): void {
+        this.clearableValue = value;
+        this.wasCleared = false;
+    }
+
+    public onCleared(): void {
+        this.clearableValue = '';
+        this.wasCleared = true;
+        setTimeout(() => (this.wasCleared = false), 2000);
     }
 
     public onBlurred(event: FocusEvent): void {

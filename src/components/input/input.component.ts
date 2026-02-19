@@ -26,6 +26,8 @@ export class InputComponent implements ControlValueAccessor {
 
     @Input() public required = false;
 
+    @Input() public clearable = false;
+
     @Input() public error = '';
 
     @Input() public hint = '';
@@ -33,6 +35,8 @@ export class InputComponent implements ControlValueAccessor {
     @Output() public valueChange = new EventEmitter<string>();
 
     @Output() public blurred = new EventEmitter<FocusEvent>();
+
+    @Output() public cleared = new EventEmitter<void>();
 
     public value = '';
 
@@ -56,6 +60,13 @@ export class InputComponent implements ControlValueAccessor {
     public onBlur(event: FocusEvent): void {
         this.onTouched();
         this.blurred.emit(event);
+    }
+
+    public clearValue(): void {
+        this.value = '';
+        this.onChange(this.value);
+        this.valueChange.emit(this.value);
+        this.cleared.emit();
     }
 
     // ControlValueAccessor implementation

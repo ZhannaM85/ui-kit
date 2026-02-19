@@ -88,6 +88,24 @@
   </section>
 
   <section class="showcase-section">
+    <h3>Clearable</h3>
+    <div class="row column">
+      <kit-input
+        label="Search"
+        placeholder="Type something to see the clear icon..."
+        [clearable]="true"
+        (valueChange)="onClearableValueChange($event)"
+        (cleared)="onCleared()">
+      </kit-input>
+      <p class="showcase-desc">
+        <span *ngIf="clearableValue">Current value: <strong>{{ clearableValue }}</strong></span>
+        <span *ngIf="!clearableValue">Type at least one character to reveal the clear icon.</span>
+        <span *ngIf="wasCleared" class="cleared-label"> — Cleared!</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="showcase-section">
     <h3>Interactive Example</h3>
     <div class="row column">
       <kit-input
