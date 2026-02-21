@@ -8,13 +8,21 @@ const MAX_VISIBLE = 5;
 @Injectable({ providedIn: 'root' })
 export class NotificationService {
     private notifications: KitNotification[] = [];
+
     private notificationsSubject = new BehaviorSubject<KitNotification[]>([]);
+
     private timers = new Map<string, ReturnType<typeof setTimeout>>();
+
     private counter = 0;
 
     public notifications$: Observable<KitNotification[]> = this.notificationsSubject.asObservable();
 
-    public show(message: string, type: NotificationType, duration: number = DEFAULT_DURATION): void {
+    public show(
+        message: string,
+        type: NotificationType,
+        duration: number = DEFAULT_DURATION,
+        icon?: string,
+    ): void {
         const id = `kit-notif-${++this.counter}`;
         const notification: KitNotification = { id, message, type, duration };
 

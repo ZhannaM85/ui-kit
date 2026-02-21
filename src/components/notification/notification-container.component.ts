@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { KitNotification } from './notification.model';
 import { NotificationService } from './notification.service';
@@ -8,17 +8,24 @@ import { NotificationService } from './notification.service';
     standalone: false,
     templateUrl: './notification-container.component.html',
     styleUrls: ['./notification-container.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotificationContainerComponent implements OnInit, OnDestroy {
     public notifications: KitNotification[] = [];
 
     private subscription!: Subscription;
 
-    constructor(private notificationService: NotificationService) {}
+    constructor(
+        private notificationService: NotificationService,
+        private cdr: ChangeDetectorRef,
+    ) {}
 
     public ngOnInit(): void {
         this.subscription = this.notificationService.notifications$.subscribe(
-            (notifications) => (this.notifications = notifications)
+            (notifications) => {
+                this.notifications = notifications;
+                this.cdr.detectChanges();
+            }
         );
     }
 

@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-inject */
 import { Component } from '@angular/core';
 import { NotificationService } from '@zhannam85/ui-kit';
 import { ClipboardService } from '../../services/clipboard.service';
