@@ -45,7 +45,7 @@ this.notifications.error('Something went wrong');`;
     }
 
     public showCustomDuration(): void {
-        this.notificationService.show('This disappears in 5 seconds.', 'success', 5000);
+        this.notificationService.show('This disappears in 5 seconds.', 'success', { duration: 5000 });
     }
 
     public copyUsageCode(): void {
