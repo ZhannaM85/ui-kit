@@ -1,0 +1,7 @@
+<div class="kit-notification-container" role="status" aria-live="polite">
+    <kit-notification
+        *ngFor="let notif of notifications; trackBy: trackById"
+        [notification]="notif"
+        (dismissed)="onDismiss($event)">
+    </kit-notification>
+</div>

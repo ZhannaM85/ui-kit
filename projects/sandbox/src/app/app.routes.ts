@@ -9,5 +9,6 @@ export const routes: Routes = [
     { path: 'input', loadChildren: () => import('./showcase/input-sandbox/input-showcase.module').then(m => m.InputShowcaseModule) },
     { path: 'textarea', loadChildren: () => import('./showcase/textarea-sandbox/textarea-showcase.module').then(m => m.TextareaShowcaseModule) },
     { path: 'icons', loadChildren: () => import('./showcase/icon-sandbox/icon-showcase.module').then(m => m.IconShowcaseModule) },
+    { path: 'notification', loadChildren: () => import('./showcase/notification-sandbox/notification-showcase.module').then(m => m.NotificationShowcaseModule) },
     { path: '**', redirectTo: 'welcome' },
 ];
