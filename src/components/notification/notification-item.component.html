@@ -5,6 +5,12 @@
         <kit-icon-x-circle *ngIf="notification.type === 'error'" [size]="20"></kit-icon-x-circle>
     </div>
     <span class="kit-notification__message">{{ notification.message }}</span>
+    <button *ngIf="notification.actionLabel"
+            class="kit-notification__action"
+            (click)="onAction()"
+            type="button">
+        {{ notification.actionLabel }}
+    </button>
     <button class="kit-notification__close" (click)="onDismiss()" type="button" aria-label="Close notification">
         <kit-icon-close [size]="16"></kit-icon-close>
     </button>

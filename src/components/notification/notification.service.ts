@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { KitNotification, NotificationType } from './notification.model';
+import { KitNotification, NotificationOptions, NotificationType } from './notification.model';
 
 const DEFAULT_DURATION = 20000;
 const MAX_VISIBLE = 5;
@@ -17,14 +17,17 @@ export class NotificationService {
 
     public notifications$: Observable<KitNotification[]> = this.notificationsSubject.asObservable();
 
-    public show(
-        message: string,
-        type: NotificationType,
-        duration: number = DEFAULT_DURATION,
-        icon?: string,
-    ): void {
+    public show(message: string, type: NotificationType, options?: NotificationOptions): void {
+        const duration = options?.duration ?? DEFAULT_DURATION;
         const id = `kit-notif-${++this.counter}`;
-        const notification: KitNotification = { id, message, type, duration };
+        const notification: KitNotification = {
+            id,
+            message,
+            type,
+            duration,
+            actionLabel: options?.actionLabel,
+            actionCallback: options?.actionCallback,
+        };
 
         this.notifications = [...this.notifications, notification];
 
@@ -42,16 +45,16 @@ export class NotificationService {
         }
     }
 
-    public success(message: string, duration?: number): void {
-        this.show(message, 'success', duration);
+    public success(message: string, options?: NotificationOptions): void {
+        this.show(message, 'success', options);
     }
 
-    public warning(message: string, duration?: number): void {
-        this.show(message, 'warning', duration);
+    public warning(message: string, options?: NotificationOptions): void {
+        this.show(message, 'warning', options);
     }
 
-    public error(message: string, duration?: number): void {
-        this.show(message, 'error', duration);
+    public error(message: string, options?: NotificationOptions): void {
+        this.show(message, 'error', options);
     }
 
     public dismiss(id: string): void {

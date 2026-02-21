@@ -61,6 +61,31 @@ $error-text: #922b21;
         word-break: break-word;
     }
 
+    &__action {
+        flex-shrink: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        transition: opacity 0.15s ease;
+        white-space: nowrap;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &:focus-visible {
+            outline: 2px solid currentColor;
+            outline-offset: 2px;
+        }
+    }
+
     &__close {
         flex-shrink: 0;
         background: none;

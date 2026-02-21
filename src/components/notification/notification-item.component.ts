@@ -12,6 +12,11 @@ export class NotificationItemComponent {
 
     @Output() public dismissed = new EventEmitter<string>();
 
+    public onAction(): void {
+        this.notification.actionCallback?.();
+        this.dismissed.emit(this.notification.id);
+    }
+
     public onDismiss(): void {
         this.dismissed.emit(this.notification.id);
     }
