@@ -20,3 +20,8 @@ export * from './components/input/input.component';
 export * from './components/input/input.module';
 export * from './components/textarea/textarea.component';
 export * from './components/textarea/textarea.module';
+export * from './components/notification/notification.model';
+export * from './components/notification/notification.service';
+export * from './components/notification/notification-item.component';
+export * from './components/notification/notification-container.component';
+export * from './components/notification/notification.module';
