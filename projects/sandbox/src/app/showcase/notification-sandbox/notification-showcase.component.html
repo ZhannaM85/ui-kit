@@ -1,0 +1,49 @@
+<div class="showcase">
+    <h1 class="showcase-title">Notification</h1>
+    <p class="showcase-desc">Growl-style notifications with auto-dismiss and close button.</p>
+
+    <section class="showcase-section">
+        <h3>Usage</h3>
+        <div class="usage-block">
+            <div class="usage-copy-wrap">
+                <span *ngIf="copied" class="usage-copied-label">Copied!</span>
+                <button type="button" class="usage-copy" [class.usage-copy--success]="copied" (click)="copyUsageCode()" [title]="copied ? 'Copied!' : 'Copy code'">
+                    <kit-icon-check *ngIf="copied" class="usage-copy-icon" [size]="16"></kit-icon-check>
+                    <kit-icon-copy *ngIf="!copied" class="usage-copy-icon" [size]="16"></kit-icon-copy>
+                </button>
+            </div>
+            <pre class="usage-example"><code>// In your module:
+import &#123; NotificationModule &#125; from '@zhannam85/ui-kit';
+
+// In your root template:
+&lt;kit-notification-container&gt;&lt;/kit-notification-container&gt;
+
+// In your component:
+import &#123; NotificationService &#125; from '@zhannam85/ui-kit';
+
+constructor(private notifications: NotificationService) &#123;&#125;
+
+this.notifications.success('Operation completed');
+this.notifications.warning('Check your input');
+this.notifications.error('Something went wrong');</code></pre>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <h3>Types</h3>
+        <div class="row">
+            <kit-button label="Success" variant="primary" (buttonClicked)="showSuccess()"></kit-button>
+            <kit-button label="Warning" variant="secondary" (buttonClicked)="showWarning()"></kit-button>
+            <kit-button label="Error" variant="danger" (buttonClicked)="showError()"></kit-button>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <h3>Custom Duration</h3>
+        <div class="row">
+            <kit-button label="5 second notification" variant="primary" size="small" (buttonClicked)="showCustomDuration()"></kit-button>
+        </div>
+    </section>
+</div>
+
+<kit-notification-container></kit-notification-container>

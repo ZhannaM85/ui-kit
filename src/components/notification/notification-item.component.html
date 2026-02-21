@@ -1,0 +1,17 @@
+<div class="kit-notification" [ngClass]="'kit-notification--' + notification.type" role="alert">
+    <div class="kit-notification__icon">
+        <kit-icon-check-circle *ngIf="notification.type === 'success'" [size]="20"></kit-icon-check-circle>
+        <kit-icon-alert-triangle *ngIf="notification.type === 'warning'" [size]="20"></kit-icon-alert-triangle>
+        <kit-icon-x-circle *ngIf="notification.type === 'error'" [size]="20"></kit-icon-x-circle>
+    </div>
+    <span class="kit-notification__message">{{ notification.message }}</span>
+    <button *ngIf="notification.actionLabel"
+            class="kit-notification__action"
+            (click)="onAction()"
+            type="button">
+        {{ notification.actionLabel }}
+    </button>
+    <button class="kit-notification__close" (click)="onDismiss()" type="button" aria-label="Close notification">
+        <kit-icon-close [size]="16"></kit-icon-close>
+    </button>
+</div>

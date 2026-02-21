@@ -6,6 +6,9 @@ import { IconChevronDownComponent } from './icon-chevron-down.component';
 import { IconCloseComponent } from './icon-close.component';
 import { IconSortAscComponent } from './icon-sort-asc.component';
 import { IconSortDescComponent } from './icon-sort-desc.component';
+import { IconCheckCircleComponent } from './icon-check-circle.component';
+import { IconAlertTriangleComponent } from './icon-alert-triangle.component';
+import { IconXCircleComponent } from './icon-x-circle.component';
 
 const ICON_COMPONENTS = [
     IconCopyComponent,
@@ -14,6 +17,9 @@ const ICON_COMPONENTS = [
     IconCloseComponent,
     IconSortAscComponent,
     IconSortDescComponent,
+    IconCheckCircleComponent,
+    IconAlertTriangleComponent,
+    IconXCircleComponent,
 ];
 
 @NgModule({
