@@ -76,12 +76,12 @@ describe('CheckboxComponent', () => {
     it('should not emit checkedChange when disabled', () => {
         jest.spyOn(component.checkedChange, 'emit');
         component.disabled = true;
-        fixture.detectChanges();
+        component.checked = false;
 
-        const inputElement = fixture.nativeElement.querySelector('input[type="checkbox"]');
-        inputElement.click();
-        fixture.detectChanges();
+        const mockEvent = { target: { checked: true } } as unknown as Event;
+        component.onCheckboxChange(mockEvent);
 
+        expect(component.checked).toBe(false);
         expect(component.checkedChange.emit).not.toHaveBeenCalled();
     });
 
