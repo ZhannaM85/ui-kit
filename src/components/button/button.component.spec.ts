@@ -73,10 +73,9 @@ describe('ButtonComponent', () => {
     it('should not emit click event when disabled', () => {
         jest.spyOn(component.buttonClicked, 'emit');
         component.disabled = true;
-        fixture.detectChanges();
 
-        const buttonElement = fixture.nativeElement.querySelector('button');
-        buttonElement.click();
+        const mockEvent = new MouseEvent('click');
+        component.onClick(mockEvent);
 
         expect(component.buttonClicked.emit).not.toHaveBeenCalled();
     });

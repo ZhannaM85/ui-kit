@@ -130,4 +130,25 @@ describe('InputComponent', () => {
     it('should generate a unique inputId', () => {
         expect(component.inputId).toMatch(/^kit-input-/);
     });
+
+    it('should register onChange callback and invoke it on input', () => {
+        const onChangeSpy = jest.fn();
+        component.registerOnChange(onChangeSpy);
+
+        const input = fixture.nativeElement.querySelector('input');
+        input.value = 'new value';
+        input.dispatchEvent(new Event('input'));
+
+        expect(onChangeSpy).toHaveBeenCalledWith('new value');
+    });
+
+    it('should register onTouched callback and invoke it on blur', () => {
+        const onTouchedSpy = jest.fn();
+        component.registerOnTouched(onTouchedSpy);
+
+        const input = fixture.nativeElement.querySelector('input');
+        input.dispatchEvent(new Event('blur'));
+
+        expect(onTouchedSpy).toHaveBeenCalled();
+    });
 });

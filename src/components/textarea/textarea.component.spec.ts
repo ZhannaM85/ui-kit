@@ -117,4 +117,25 @@ describe('TextareaComponent', () => {
     it('should generate a unique textareaId', () => {
         expect(component.textareaId).toMatch(/^kit-textarea-/);
     });
+
+    it('should register onChange callback and invoke it on input', () => {
+        const onChangeSpy = jest.fn();
+        component.registerOnChange(onChangeSpy);
+
+        const textarea = fixture.nativeElement.querySelector('textarea');
+        textarea.value = 'new value';
+        textarea.dispatchEvent(new Event('input'));
+
+        expect(onChangeSpy).toHaveBeenCalledWith('new value');
+    });
+
+    it('should register onTouched callback and invoke it on blur', () => {
+        const onTouchedSpy = jest.fn();
+        component.registerOnTouched(onTouchedSpy);
+
+        const textarea = fixture.nativeElement.querySelector('textarea');
+        textarea.dispatchEvent(new Event('blur'));
+
+        expect(onTouchedSpy).toHaveBeenCalled();
+    });
 });
