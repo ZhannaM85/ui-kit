@@ -1,6 +1,6 @@
 # Angular UI Kit
 
-A modern, reusable Angular 21 UI component library featuring Button, Dropdown, and Checkbox components. Built with standalone components and designed for easy integration into Angular applications.
+A modern, reusable Angular 21 UI component library featuring Button, Input, Textarea, Dropdown, Checkbox, Notification, and Icon components. Built with NgModules and designed for easy integration into Angular applications.
 
 **Live demo:** [https://zhannam85.github.io/ui-kit](https://zhannam85.github.io/ui-kit)
 
@@ -8,12 +8,13 @@ A modern, reusable Angular 21 UI component library featuring Button, Dropdown, a
 
 ## Features
 
-- 🎨 **Modern Design**: Clean, polished UI components with smooth animations
-- 📦 **Standalone Components**: Built with Angular 21 standalone components (no NgModules required)
-- 🎯 **Type-Safe**: Full TypeScript support with proper typing
-- ♿ **Accessible**: Built with accessibility in mind
-- 🎨 **Customizable**: Multiple variants and sizes for each component
-- 📱 **Responsive**: Works seamlessly across different screen sizes
+- **Modern Design** — Clean, polished UI components with smooth animations
+- **NgModule Architecture** — Each component ships with its own Angular module for straightforward imports
+- **Type-Safe** — Full TypeScript support with proper typing
+- **Accessible** — Built with accessibility in mind
+- **Customizable** — Multiple variants and sizes for each component
+- **Responsive** — Works seamlessly across different screen sizes
+- **Forms Integration** — Input and Textarea implement `ControlValueAccessor` for Reactive and Template-driven forms
 
 ## Installation
 
@@ -21,38 +22,30 @@ A modern, reusable Angular 21 UI component library featuring Button, Dropdown, a
 npm install @zhannam85/ui-kit
 ```
 
-**Note**: Replace `@zhannam85` with your npm username or organization name before publishing.
-
 ## Components
 
-### Button Component
+### Button
 
 A versatile button component with multiple variants and sizes.
 
 #### Usage
 
 ```typescript
-import { ButtonComponent } from '@zhannam85/ui-kit';
-import { Component } from '@angular/core';
+import { ButtonModule } from '@zhannam85/ui-kit';
 
-@Component({
-  selector: 'app-example',
-  standalone: true,
-  imports: [ButtonComponent],
-  template: `
-    <kit-button
-      label="Click Me"
-      variant="primary"
-      size="medium"
-      (buttonClicked)="handleClick($event)">
-    </kit-button>
-  `
+@NgModule({
+  imports: [ButtonModule],
 })
-export class ExampleComponent {
-  handleClick(event: MouseEvent) {
-    console.log('Button clicked!', event);
-  }
-}
+export class MyModule {}
+```
+
+```html
+<kit-button
+  label="Click Me"
+  variant="primary"
+  size="medium"
+  (buttonClicked)="handleClick($event)">
+</kit-button>
 ```
 
 #### Inputs
@@ -69,45 +62,158 @@ export class ExampleComponent {
 
 | Event | Type | Description |
 |-------|------|-------------|
-| `click` | `EventEmitter<MouseEvent>` | Emitted when button is clicked |
+| `buttonClicked` | `EventEmitter<MouseEvent>` | Emitted when button is clicked |
 
-### Dropdown Component
+---
+
+### Input
+
+A text input component with validation support, clearable option, and Angular forms integration (`ControlValueAccessor`).
+
+#### Usage
+
+```typescript
+import { InputModule } from '@zhannam85/ui-kit';
+
+@NgModule({
+  imports: [InputModule],
+})
+export class MyModule {}
+```
+
+```html
+<kit-input
+  label="Email"
+  placeholder="Enter your email"
+  type="email"
+  [required]="true"
+  [clearable]="true"
+  hint="We'll never share your email"
+  (valueChange)="onValueChange($event)"
+  (cleared)="onCleared()">
+</kit-input>
+```
+
+Use with Reactive Forms:
+
+```html
+<kit-input label="Name" [formControl]="nameControl"></kit-input>
+```
+
+#### Inputs
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `label` | `string` | `''` | Input label text |
+| `placeholder` | `string` | `''` | Placeholder text |
+| `type` | `'text' \| 'email' \| 'password' \| 'number' \| 'tel' \| 'url'` | `'text'` | HTML input type |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `required` | `boolean` | `false` | Required state |
+| `clearable` | `boolean` | `false` | Show a clear button when input has a value |
+| `error` | `string` | `''` | Error message displayed below the input |
+| `hint` | `string` | `''` | Hint text displayed below the input |
+
+#### Outputs
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `valueChange` | `EventEmitter<string>` | Emitted when the value changes |
+| `blurred` | `EventEmitter<FocusEvent>` | Emitted when the input loses focus |
+| `cleared` | `EventEmitter<void>` | Emitted when the clear button is clicked |
+
+---
+
+### Textarea
+
+A textarea component with Angular forms integration (`ControlValueAccessor`).
+
+#### Usage
+
+```typescript
+import { TextareaModule } from '@zhannam85/ui-kit';
+
+@NgModule({
+  imports: [TextareaModule],
+})
+export class MyModule {}
+```
+
+```html
+<kit-textarea
+  label="Description"
+  placeholder="Enter a description"
+  [rows]="6"
+  hint="Max 500 characters"
+  (valueChange)="onValueChange($event)">
+</kit-textarea>
+```
+
+Use with Reactive Forms:
+
+```html
+<kit-textarea label="Bio" [formControl]="bioControl"></kit-textarea>
+```
+
+#### Inputs
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `label` | `string` | `''` | Textarea label text |
+| `placeholder` | `string` | `''` | Placeholder text |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `required` | `boolean` | `false` | Required state |
+| `error` | `string` | `''` | Error message displayed below the textarea |
+| `hint` | `string` | `''` | Hint text displayed below the textarea |
+| `rows` | `number` | `4` | Number of visible text rows |
+
+#### Outputs
+
+| Event | Type | Description |
+|-------|------|-------------|
+| `valueChange` | `EventEmitter<string>` | Emitted when the value changes |
+| `blurred` | `EventEmitter<FocusEvent>` | Emitted when the textarea loses focus |
+
+---
+
+### Dropdown
 
 A dropdown/select component with customizable options.
 
 #### Usage
 
 ```typescript
-import { DropdownComponent, DropdownOption } from '@zhannam85/ui-kit';
-import { Component } from '@angular/core';
+import { DropdownModule, DropdownOption } from '@zhannam85/ui-kit';
 
-@Component({
-  selector: 'app-example',
-  standalone: true,
-  imports: [DropdownComponent],
-  template: `
-    <kit-dropdown
-      [options]="options"
-      placeholder="Select an option"
-      [selectedValue]="selectedValue"
-      (selectionChange)="onSelectionChange($event)">
-    </kit-dropdown>
-  `
+@NgModule({
+  imports: [DropdownModule],
 })
+export class MyModule {}
+```
+
+```typescript
+@Component({ /* ... */ })
 export class ExampleComponent {
   options: DropdownOption[] = [
     { label: 'Option 1', value: 'opt1' },
     { label: 'Option 2', value: 'opt2' },
-    { label: 'Option 3', value: 'opt3' }
+    { label: 'Option 3', value: 'opt3' },
   ];
-  
+
   selectedValue: any = null;
 
   onSelectionChange(value: any) {
     this.selectedValue = value;
-    console.log('Selected:', value);
   }
 }
+```
+
+```html
+<kit-dropdown
+  [options]="options"
+  placeholder="Select an option"
+  [selectedValue]="selectedValue"
+  (selectionChange)="onSelectionChange($event)">
+</kit-dropdown>
 ```
 
 #### Inputs
@@ -134,36 +240,29 @@ interface DropdownOption {
 }
 ```
 
-### Checkbox Component
+---
+
+### Checkbox
 
 A checkbox component with label support and indeterminate state.
 
 #### Usage
 
 ```typescript
-import { CheckboxComponent } from '@zhannam85/ui-kit';
-import { Component } from '@angular/core';
+import { CheckboxModule } from '@zhannam85/ui-kit';
 
-@Component({
-  selector: 'app-example',
-  standalone: true,
-  imports: [CheckboxComponent],
-  template: `
-    <kit-checkbox
-      label="Accept terms and conditions"
-      [checked]="isChecked"
-      (checkedChange)="onCheckedChange($event)">
-    </kit-checkbox>
-  `
+@NgModule({
+  imports: [CheckboxModule],
 })
-export class ExampleComponent {
-  isChecked: boolean = false;
+export class MyModule {}
+```
 
-  onCheckedChange(checked: boolean) {
-    this.isChecked = checked;
-    console.log('Checked:', checked);
-  }
-}
+```html
+<kit-checkbox
+  label="Accept terms and conditions"
+  [checked]="isChecked"
+  (checkedChange)="onCheckedChange($event)">
+</kit-checkbox>
 ```
 
 #### Inputs
@@ -181,29 +280,130 @@ export class ExampleComponent {
 |-------|------|-------------|
 | `checkedChange` | `EventEmitter<boolean>` | Emitted when checked state changes |
 
+---
+
+### Notification
+
+A toast notification system with auto-dismiss, action buttons, and stacking support.
+
+#### Setup
+
+Import the module and place the container component in your root template:
+
+```typescript
+import { NotificationModule } from '@zhannam85/ui-kit';
+
+@NgModule({
+  imports: [NotificationModule],
+})
+export class AppModule {}
+```
+
+```html
+<!-- app.component.html -->
+<kit-notification-container></kit-notification-container>
+<router-outlet></router-outlet>
+```
+
+#### Usage
+
+Inject `NotificationService` and call its methods:
+
+```typescript
+import { NotificationService } from '@zhannam85/ui-kit';
+
+@Component({ /* ... */ })
+export class ExampleComponent {
+  constructor(private notificationService: NotificationService) {}
+
+  showSuccess() {
+    this.notificationService.success('Record saved successfully.');
+  }
+
+  showWarning() {
+    this.notificationService.warning('Session is about to expire.', {
+      duration: 10000,
+    });
+  }
+
+  showError() {
+    this.notificationService.error('Failed to load data.', {
+      actionLabel: 'Retry',
+      actionCallback: () => this.reload(),
+    });
+  }
+}
+```
+
+#### NotificationService Methods
+
+| Method | Arguments | Description |
+|--------|-----------|-------------|
+| `show` | `message: string, type: NotificationType, options?: NotificationOptions` | Show a notification |
+| `success` | `message: string, options?: NotificationOptions` | Show a success notification |
+| `warning` | `message: string, options?: NotificationOptions` | Show a warning notification |
+| `error` | `message: string, options?: NotificationOptions` | Show an error notification |
+| `dismiss` | `id: string` | Dismiss a notification by ID |
+
+#### Types
+
+```typescript
+type NotificationType = 'success' | 'warning' | 'error';
+
+interface NotificationOptions {
+  duration?: number;        // Auto-dismiss time in ms (default: 20000)
+  actionLabel?: string;     // Label for an optional action button
+  actionCallback?: () => void;
+}
+
+interface KitNotification {
+  id: string;
+  message: string;
+  type: NotificationType;
+  duration: number;
+  actionLabel?: string;
+  actionCallback?: () => void;
+}
+```
+
+Maximum 5 notifications are visible at a time.
+
+---
+
 ### Icon Components
 
-Reusable SVG icon components with customizable size and color.
-
-#### Available icons
-
-| Component | Selector | Default size | Description |
-|-----------|----------|-------------|-------------|
-| `IconCopyComponent` | `kit-icon-copy` | 16 | Clipboard / copy |
-| `IconCheckComponent` | `kit-icon-check` | 16 | Checkmark |
-| `IconChevronDownComponent` | `kit-icon-chevron-down` | 12 | Chevron arrow |
+Reusable SVG icon components with customizable size and color. All icons extend `BaseIconComponent` and are bundled in `IconModule`.
 
 #### Usage
 
 ```typescript
 import { IconModule } from '@zhannam85/ui-kit';
+
+@NgModule({
+  imports: [IconModule],
+})
+export class MyModule {}
 ```
 
 ```html
 <kit-icon-copy [size]="16" color="#333"></kit-icon-copy>
 <kit-icon-check [size]="20"></kit-icon-check>
-<kit-icon-chevron-down [size]="12"></kit-icon-chevron-down>
+<kit-icon-close [size]="24" color="red"></kit-icon-close>
 ```
+
+#### Available Icons
+
+| Component | Selector | Default Size |
+|-----------|----------|:------------:|
+| `IconCopyComponent` | `kit-icon-copy` | 16 |
+| `IconCheckComponent` | `kit-icon-check` | 16 |
+| `IconChevronDownComponent` | `kit-icon-chevron-down` | 12 |
+| `IconCloseComponent` | `kit-icon-close` | 20 |
+| `IconSortAscComponent` | `kit-icon-sort-asc` | 12 |
+| `IconSortDescComponent` | `kit-icon-sort-desc` | 12 |
+| `IconCheckCircleComponent` | `kit-icon-check-circle` | 20 |
+| `IconAlertTriangleComponent` | `kit-icon-alert-triangle` | 20 |
+| `IconXCircleComponent` | `kit-icon-x-circle` | 20 |
 
 #### Inputs (shared by all icons)
 
@@ -212,7 +412,7 @@ import { IconModule } from '@zhannam85/ui-kit';
 | `size` | `number` | varies per icon | Width and height in pixels |
 | `color` | `string` | `'currentColor'` | Stroke/fill color (inherits text color by default) |
 
-#### Adding a new icon
+#### Adding a New Icon
 
 1. Create a new file in `src/components/icon/`, e.g. `icon-arrow-right.component.ts`:
 
@@ -276,24 +476,27 @@ export * from './components/icon/icon-arrow-right.component';
 ### Setup
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd ui-kit
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Build the library:
+
 ```bash
 npm run build
 ```
 
 The built library will be in the `dist/ui-kit` directory.
 
-### Sandbox (local preview)
+### Sandbox (Local Preview)
 
 Run the sandbox app to preview components in the browser:
 
@@ -301,9 +504,9 @@ Run the sandbox app to preview components in the browser:
 npm start
 ```
 
-This builds the library, clears the Angular cache, and serves the sandbox at **http://localhost:4200**. The sandbox has a left sidebar listing components (with a filter) and a main area showing each component’s showcase.
+This builds the library, clears the Angular cache, and serves the sandbox at **http://localhost:4200**. The sandbox has a left sidebar listing components (with a filter) and a main area showing each component's showcase.
 
-**Proxy:** API requests to `/api` are proxied to `http://localhost:3000` by default. Edit `proxy.conf.json` to change the `target` (e.g. to your backend URL).
+**Proxy:** API requests to `/api` are proxied to `http://localhost:3000` by default. Edit `proxy.conf.json` to change the target.
 
 ### Running Tests
 
@@ -319,50 +522,67 @@ npm run build
 
 ## Publishing to npm
 
-1. Update the package name in `package.json` with your npm username/organization
+1. Update the package name in `package.json` with your npm username/organization.
 2. Build the library:
+
 ```bash
 npm run build
 ```
 
 3. Navigate to the dist directory:
+
 ```bash
 cd dist/ui-kit
 ```
 
 4. Publish to npm:
+
 ```bash
 npm publish
 ```
 
 For scoped packages (starting with `@`), use:
+
 ```bash
 npm publish --access public
 ```
 
+Alternatively, use the release script which bumps the version, builds, publishes, and commits:
+
+```bash
+npm run release
+```
+
 ## Using in Your Application
 
-After installing the package:
+After installing the package, import the modules you need:
 
-1. Import the components in your Angular component:
 ```typescript
-import { ButtonComponent, DropdownComponent, CheckboxComponent } from '@zhannam85/ui-kit';
-```
+import { ButtonModule, DropdownModule, CheckboxModule, InputModule, TextareaModule, NotificationModule, IconModule } from '@zhannam85/ui-kit';
 
-2. Add them to your component's `imports` array (standalone components):
-```typescript
-@Component({
-  standalone: true,
-  imports: [ButtonComponent, DropdownComponent, CheckboxComponent],
-  // ...
+@NgModule({
+  imports: [
+    ButtonModule,
+    DropdownModule,
+    CheckboxModule,
+    InputModule,
+    TextareaModule,
+    NotificationModule,
+    IconModule,
+  ],
 })
+export class MyFeatureModule {}
 ```
 
-3. Use them in your template:
+Then use the components in your templates:
+
 ```html
 <kit-button label="Submit" variant="primary" (buttonClicked)="onSubmit()"></kit-button>
+<kit-input label="Name" placeholder="Enter name" (valueChange)="onNameChange($event)"></kit-input>
+<kit-textarea label="Notes" [rows]="5"></kit-textarea>
 <kit-dropdown [options]="myOptions" (selectionChange)="onChange($event)"></kit-dropdown>
 <kit-checkbox label="I agree" [checked]="agreed" (checkedChange)="onAgreeChange($event)"></kit-checkbox>
+<kit-notification-container></kit-notification-container>
 ```
 
 ## Browser Support
