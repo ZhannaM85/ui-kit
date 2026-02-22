@@ -19,9 +19,9 @@
   "scripts": {
     "build": "ng-packagr -p ng-package.json",
     "start": "npm run build && ng cache clean && ng serve",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test": "jest --verbose",
+    "test:watch": "jest --watch --verbose",
+    "test:coverage": "jest --coverage --verbose",
     "lint": "ng lint",
     "release": "node scripts/release.js"
   },
