@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { generateId } from '../../utils/utils';
 
 @Component({
     selector: 'kit-textarea',
@@ -35,7 +36,7 @@ export class TextareaComponent implements ControlValueAccessor {
 
     public value = '';
 
-    public textareaId = `kit-textarea-${Math.random().toString(36).substring(2, 9)}`;
+    public textareaId = generateId('kit-textarea', 7);
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private onChange = (_: string): void => {

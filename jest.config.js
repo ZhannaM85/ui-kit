@@ -5,6 +5,7 @@ module.exports = {
   collectCoverage: true,
   coverageReporters: ['html', 'text', 'text-summary'],
   coverageDirectory: 'coverage',
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

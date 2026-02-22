@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { DropdownComponent, DropdownOption } from './dropdown.component';
 
 describe('DropdownComponent', () => {
@@ -15,7 +16,8 @@ describe('DropdownComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [DropdownComponent],
-            imports: [CommonModule]
+            imports: [CommonModule],
+            schemas: [NO_ERRORS_SCHEMA]
         }).compileComponents();
 
         fixture = TestBed.createComponent(DropdownComponent);
