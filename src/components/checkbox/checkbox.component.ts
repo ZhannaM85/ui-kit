@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { generateId } from '../../utils/generate-id';
+import { generateId } from '../../utils/utils';
 
 @Component({
     selector: 'kit-checkbox',

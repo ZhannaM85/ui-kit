@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { KitNotification, NotificationOptions, NotificationType } from './notification.model';
-import { generateNotificationId, enforceMaxVisible, resolveDuration } from './notification.utils';
+import { generateNotificationId, enforceMaxVisible, resolveDuration } from '../../utils/utils';
 
 const MAX_VISIBLE = 5;
 

@@ -1,7 +1,7 @@
 /* eslint-disable @angular-eslint/prefer-inject */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, OnInit } from '@angular/core';
-import { findSelectedOption, isActivationKey } from './dropdown.utils';
+import { findSelectedOption, isActivationKey } from '../../utils/utils';
 import { DropdownOption } from './dropdown.model';
 
 export { DropdownOption } from './dropdown.model';
