@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
 import { InputComponent } from './input.component';
-import { IconModule } from '../icon/icon.module';
 
 @Component({ selector: 'kit-icon-close', template: '', standalone: false })
 class MockIconCloseComponent {
-    size: number | undefined;
-    color: string | undefined;
+    public size: number | undefined;
+
+    public color: string | undefined;
 }
 
 describe('InputComponent', () => {
