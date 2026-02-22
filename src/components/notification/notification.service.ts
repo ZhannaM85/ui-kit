@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { KitNotification, NotificationOptions, NotificationType } from './notification.model';
+import { generateNotificationId, enforceMaxVisible, resolveDuration } from './notification.utils';
 
-const DEFAULT_DURATION = 20000;
 const MAX_VISIBLE = 5;
 
 @Injectable({ providedIn: 'root' })
@@ -18,8 +18,8 @@ export class NotificationService {
     public notifications$: Observable<KitNotification[]> = this.notificationsSubject.asObservable();
 
     public show(message: string, type: NotificationType, options?: NotificationOptions): void {
-        const duration = options?.duration ?? DEFAULT_DURATION;
-        const id = `kit-notif-${++this.counter}`;
+        const duration = resolveDuration(options);
+        const id = generateNotificationId(++this.counter);
         const notification: KitNotification = {
             id,
             message,
@@ -31,10 +31,10 @@ export class NotificationService {
 
         this.notifications = [...this.notifications, notification];
 
-        if (this.notifications.length > MAX_VISIBLE) {
-            const removed = this.notifications[0];
+        const { kept, removed } = enforceMaxVisible(this.notifications, MAX_VISIBLE);
+        if (removed) {
             this.clearTimer(removed.id);
-            this.notifications = this.notifications.slice(1);
+            this.notifications = kept;
         }
 
         this.notificationsSubject.next(this.notifications);

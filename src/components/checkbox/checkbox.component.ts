@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { generateId } from '../../utils/generate-id';
 
 @Component({
     selector: 'kit-checkbox',
@@ -18,7 +19,7 @@ export class CheckboxComponent {
   @Output() public checkedChange = new EventEmitter<boolean>();
 
   /** Stable id for the input (generated once per component instance to avoid NG0100). */
-  public readonly checkboxId = `kit-checkbox-${Math.random().toString(36).substring(2, 11)}`;
+  public readonly checkboxId = generateId('kit-checkbox');
 
   public onCheckboxChange(event: Event): void {
       if (!this.disabled) {

@@ -5,12 +5,16 @@ module.exports = {
   collectCoverage: true,
   coverageReporters: ['html', 'text', 'text-summary'],
   coverageDirectory: 'coverage',
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
       {
         tsconfig: '<rootDir>/tsconfig.spec.json',
-        stringifyContentPathRegex: '\\.(html|svg)$'
+        stringifyContentPathRegex: '\\.(html|svg)$',
+        diagnostics: {
+          ignoreDiagnostics: [2307]
+        }
       }
     ]
   }

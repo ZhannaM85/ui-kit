@@ -1,11 +1,10 @@
 /* eslint-disable @angular-eslint/prefer-inject */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, OnInit } from '@angular/core';
+import { findSelectedOption, isActivationKey } from './dropdown.utils';
+import { DropdownOption } from './dropdown.model';
 
-export interface DropdownOption {
-    label: string;
-    value: any;
-}
+export { DropdownOption } from './dropdown.model';
 
 @Component({
     selector: 'kit-dropdown',
@@ -65,11 +64,7 @@ export class DropdownComponent implements OnInit, OnDestroy {
     }
 
     private updateSelectedOption(): void {
-        if (this._selectedValue !== null && this._selectedValue !== undefined) {
-            this.selectedOption = this._options.find(opt => opt.value === this._selectedValue) || null;
-        } else {
-            this.selectedOption = null;
-        }
+        this.selectedOption = findSelectedOption(this._options, this._selectedValue);
     }
 
     public toggleDropdown(): void {
@@ -79,14 +74,14 @@ export class DropdownComponent implements OnInit, OnDestroy {
     }
 
     public onTriggerKeydown(event: KeyboardEvent): void {
-        if (event.key === 'Enter' || event.key === ' ') {
+        if (isActivationKey(event.key)) {
             event.preventDefault();
             this.toggleDropdown();
         }
     }
 
     public onOptionKeydown(event: KeyboardEvent, option: DropdownOption): void {
-        if (event.key === 'Enter' || event.key === ' ') {
+        if (isActivationKey(event.key)) {
             event.preventDefault();
             this.selectOption(option);
         }

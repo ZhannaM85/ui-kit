@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { generateId } from '../../utils/generate-id';
 
 @Component({
     selector: 'kit-input',
@@ -40,7 +41,7 @@ export class InputComponent implements ControlValueAccessor {
 
     public value = '';
 
-    public inputId = `kit-input-${Math.random().toString(36).substring(2, 9)}`;
+    public inputId = generateId('kit-input', 7);
 
     private onChange = (_: string): void => {
         // Placeholder - will be replaced by Angular forms via registerOnChange
