@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
 import { InputComponent } from './input.component';
-import { IconModule } from '../icon/icon.module';
 
 @Component({ selector: 'kit-icon-close', template: '', standalone: false })
 class MockIconCloseComponent {
-    size: number | undefined;
-    color: string | undefined;
+    public size: number | undefined;
+
+    public color: string | undefined;
 }
 
 describe('InputComponent', () => {
@@ -129,5 +129,26 @@ describe('InputComponent', () => {
 
     it('should generate a unique inputId', () => {
         expect(component.inputId).toMatch(/^kit-input-/);
+    });
+
+    it('should register onChange callback and invoke it on input', () => {
+        const onChangeSpy = jest.fn();
+        component.registerOnChange(onChangeSpy);
+
+        const input = fixture.nativeElement.querySelector('input');
+        input.value = 'new value';
+        input.dispatchEvent(new Event('input'));
+
+        expect(onChangeSpy).toHaveBeenCalledWith('new value');
+    });
+
+    it('should register onTouched callback and invoke it on blur', () => {
+        const onTouchedSpy = jest.fn();
+        component.registerOnTouched(onTouchedSpy);
+
+        const input = fixture.nativeElement.querySelector('input');
+        input.dispatchEvent(new Event('blur'));
+
+        expect(onTouchedSpy).toHaveBeenCalled();
     });
 });
