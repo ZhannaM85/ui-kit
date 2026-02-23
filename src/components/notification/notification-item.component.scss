@@ -1,17 +1,5 @@
 @use '../../styles/breakpoints' as *;
 
-$success-bg: #edf7ed;
-$success-border: #28a745;
-$success-text: #1e6b2e;
-
-$warning-bg: #fff8e1;
-$warning-border: #f0ad4e;
-$warning-text: #856404;
-
-$error-bg: #fdecea;
-$error-border: #dc3545;
-$error-text: #922b21;
-
 .kit-notification {
     display: flex;
     align-items: flex-start;
@@ -32,21 +20,21 @@ $error-text: #922b21;
     }
 
     &--success {
-        background-color: $success-bg;
-        border-left-color: $success-border;
-        color: $success-text;
+        background-color: var(--kit-color-success-bg, #edf7ed);
+        border-left-color: var(--kit-color-success-border, #28a745);
+        color: var(--kit-color-success-text, #1e6b2e);
     }
 
     &--warning {
-        background-color: $warning-bg;
-        border-left-color: $warning-border;
-        color: $warning-text;
+        background-color: var(--kit-color-warning-bg, #fff8e1);
+        border-left-color: var(--kit-color-warning-border, #f0ad4e);
+        color: var(--kit-color-warning-text, #856404);
     }
 
     &--error {
-        background-color: $error-bg;
-        border-left-color: $error-border;
-        color: $error-text;
+        background-color: var(--kit-color-error-bg, #fdecea);
+        border-left-color: var(--kit-color-error-border, #dc3545);
+        color: var(--kit-color-error-text, #922b21);
     }
 
     &__icon {

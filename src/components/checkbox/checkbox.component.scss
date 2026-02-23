@@ -26,13 +26,13 @@
     width: 0;
 
     &:focus-visible + .lib-checkbox__checkmark {
-      outline: 2px solid #4a90e2;
+      outline: 2px solid var(--kit-color-primary, #4a90e2);
       outline-offset: 2px;
     }
 
     &:checked ~ .lib-checkbox__checkmark {
-      background-color: #4a90e2;
-      border-color: #4a90e2;
+      background-color: var(--kit-color-primary, #4a90e2);
+      border-color: var(--kit-color-primary, #4a90e2);
 
       &::after {
         display: block;
@@ -40,8 +40,8 @@
     }
 
     &:indeterminate ~ .lib-checkbox__checkmark {
-      background-color: #4a90e2;
-      border-color: #4a90e2;
+      background-color: var(--kit-color-primary, #4a90e2);
+      border-color: var(--kit-color-primary, #4a90e2);
 
       &::after {
         display: block;
@@ -67,15 +67,15 @@
     height: 20px;
     min-width: 20px;
     min-height: 20px;
-    background-color: white;
-    border: 2px solid #ccc;
+    background-color: var(--kit-color-bg, white);
+    border: 2px solid var(--kit-color-border, #ccc);
     border-radius: 4px;
     margin-right: 10px;
     transition: all 0.2s ease-in-out;
     flex-shrink: 0;
 
     &:hover {
-      border-color: #4a90e2;
+      border-color: var(--kit-color-primary, #4a90e2);
     }
 
     &::after {
@@ -93,11 +93,11 @@
   }
 
   &__label {
-    color: #333;
+    color: var(--kit-color-text, #333);
     font-weight: 400;
   }
 
   &:hover:not(.lib-checkbox--disabled) .lib-checkbox__checkmark {
-    border-color: #4a90e2;
+    border-color: var(--kit-color-primary, #4a90e2);
   }
 }
