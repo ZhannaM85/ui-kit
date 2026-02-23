@@ -1,0 +1,143 @@
+<div class="showcase">
+    <h1 class="showcase-title">Theming</h1>
+    <p class="showcase-desc">
+        All components use <code>--kit-color-*</code> CSS custom properties with built-in fallback values.
+        Set these variables on <code>:root</code> or any ancestor element to customise the entire palette.
+        If no variables are set, components render with the original default colours.
+    </p>
+
+    <section class="showcase-section">
+        <h3>Choose a theme</h3>
+        <div class="theme-picker">
+            <button
+                *ngFor="let theme of themes"
+                class="theme-btn"
+                [class.theme-btn--active]="activeTheme.name === theme.name"
+                [class.theme-btn--dark]="theme.name === 'dark'"
+                [class.theme-btn--pink]="theme.name === 'pink'"
+                [class.theme-btn--green]="theme.name === 'green'"
+                (click)="selectTheme(theme)">
+                {{ theme.label }}
+            </button>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <h3>Live preview</h3>
+        <div class="preview-panel" [class.preview-panel--dark]="activeTheme.name === 'dark'">
+            <div class="preview-group">
+                <span class="preview-label">Buttons</span>
+                <div class="row">
+                    <kit-button label="Primary" variant="primary"></kit-button>
+                    <kit-button label="Secondary" variant="secondary"></kit-button>
+                    <kit-button label="Danger" variant="danger"></kit-button>
+                    <kit-button label="Disabled" variant="primary" [disabled]="true"></kit-button>
+                </div>
+            </div>
+
+            <div class="preview-group">
+                <span class="preview-label">Dropdown</span>
+                <div class="row">
+                    <kit-dropdown
+                        [options]="dropdownOptions"
+                        [selectedValue]="selectedFruit"
+                        placeholder="Pick a fruit"
+                        (selectionChange)="selectedFruit = $event">
+                    </kit-dropdown>
+                </div>
+            </div>
+
+            <div class="preview-group">
+                <span class="preview-label">Input</span>
+                <div class="row column">
+                    <kit-input
+                        label="Email"
+                        placeholder="you@example.com"
+                        (valueChange)="inputValue = $event">
+                    </kit-input>
+                </div>
+            </div>
+
+            <div class="preview-group">
+                <span class="preview-label">Checkbox</span>
+                <div class="row">
+                    <kit-checkbox
+                        label="I agree to the terms"
+                        [checked]="checkboxChecked"
+                        (checkedChange)="checkboxChecked = $event">
+                    </kit-checkbox>
+                </div>
+            </div>
+
+            <div class="preview-group">
+                <span class="preview-label">Icons</span>
+                <div class="row">
+                    <kit-icon-check [size]="24"></kit-icon-check>
+                    <kit-icon-close [size]="24"></kit-icon-close>
+                    <kit-icon-copy [size]="24"></kit-icon-copy>
+                    <kit-icon-sort-asc [size]="24"></kit-icon-sort-asc>
+                    <kit-icon-sort-desc [size]="24"></kit-icon-sort-desc>
+                    <kit-icon-check-circle [size]="24"></kit-icon-check-circle>
+                    <kit-icon-alert-triangle [size]="24"></kit-icon-alert-triangle>
+                    <kit-icon-x-circle [size]="24"></kit-icon-x-circle>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <h3>CSS for "{{ activeTheme.label }}"</h3>
+        <div class="usage-block">
+            <div class="usage-copy-wrap">
+                <span *ngIf="copied" class="usage-copied-label">Copied!</span>
+                <button type="button" class="usage-copy" [class.usage-copy--success]="copied" (click)="copyCode()" [title]="copied ? 'Copied!' : 'Copy code'">
+                    <kit-icon-check *ngIf="copied" class="usage-copy-icon" [size]="16"></kit-icon-check>
+                    <kit-icon-copy *ngIf="!copied" class="usage-copy-icon" [size]="16"></kit-icon-copy>
+                </button>
+            </div>
+            <pre class="usage-example"><code>{{ cssCode }}</code></pre>
+        </div>
+    </section>
+
+    <section class="showcase-section">
+        <h3>How it works</h3>
+        <ol class="how-it-works">
+            <li>Every UI Kit component references <code>var(--kit-color-*, fallback)</code> in its styles.</li>
+            <li>If no custom property is set, the <strong>fallback value</strong> is used &mdash; components look exactly the same as before.</li>
+            <li>To theme the components, set <code>--kit-color-*</code> variables on <code>:root</code>, <code>body</code>, or any wrapper element.</li>
+            <li>The variables inherit through the DOM, including through Angular&rsquo;s view encapsulation, so all components pick them up instantly.</li>
+        </ol>
+    </section>
+
+    <section class="showcase-section">
+        <h3>Available variables</h3>
+        <div class="var-table-wrap">
+            <table class="var-table">
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Default</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>--kit-color-primary</code></td><td><span class="swatch" style="background:#4a90e2"></span>#4a90e2</td><td>Primary accent</td></tr>
+                    <tr><td><code>--kit-color-primary-hover</code></td><td><span class="swatch" style="background:#357abd"></span>#357abd</td><td>Primary hover</td></tr>
+                    <tr><td><code>--kit-color-primary-rgb</code></td><td>74, 144, 226</td><td>Primary as RGB (for rgba())</td></tr>
+                    <tr><td><code>--kit-color-secondary</code></td><td><span class="swatch" style="background:#6c757d"></span>#6c757d</td><td>Secondary accent</td></tr>
+                    <tr><td><code>--kit-color-danger</code></td><td><span class="swatch" style="background:#dc3545"></span>#dc3545</td><td>Danger / error</td></tr>
+                    <tr><td><code>--kit-color-bg</code></td><td><span class="swatch" style="background:#fff;border:1px solid #e5e7eb"></span>#ffffff</td><td>Input / control backgrounds</td></tr>
+                    <tr><td><code>--kit-color-surface</code></td><td><span class="swatch" style="background:#fff;border:1px solid #e5e7eb"></span>#ffffff</td><td>Dropdown menu background</td></tr>
+                    <tr><td><code>--kit-color-text</code></td><td><span class="swatch" style="background:#333"></span>#333333</td><td>Primary text</td></tr>
+                    <tr><td><code>--kit-color-text-secondary</code></td><td><span class="swatch" style="background:#666"></span>#666666</td><td>Hints, arrows</td></tr>
+                    <tr><td><code>--kit-color-text-placeholder</code></td><td><span class="swatch" style="background:#999"></span>#999999</td><td>Placeholder / disabled text</td></tr>
+                    <tr><td><code>--kit-color-border</code></td><td><span class="swatch" style="background:#ccc"></span>#cccccc</td><td>Input / checkbox borders</td></tr>
+                    <tr><td><code>--kit-color-border-light</code></td><td><span class="swatch" style="background:#e0e0e0"></span>#e0e0e0</td><td>Dropdown borders</td></tr>
+                    <tr><td><code>--kit-color-hover-bg</code></td><td><span class="swatch" style="background:#f5f5f5"></span>#f5f5f5</td><td>Option hover / disabled bg</td></tr>
+                    <tr><td><code>--kit-color-selected-bg</code></td><td><span class="swatch" style="background:#e8f4fd"></span>#e8f4fd</td><td>Selected option background</td></tr>
+                    <tr><td><code>--kit-color-divider</code></td><td><span class="swatch" style="background:#f0f0f0"></span>#f0f0f0</td><td>Option dividers</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
