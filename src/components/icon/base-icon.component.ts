@@ -18,9 +18,4 @@ export abstract class BaseIconComponent {
 
     @HostBinding('style.display')
     public readonly display = 'inline-flex';
-
-    @HostBinding('style.color')
-    public get hostColor(): string {
-        return this.color;
-    }
 }
