@@ -14,6 +14,7 @@ const COMPONENTS: NavItem[] = [
     { name: 'Textarea', path: 'textarea', label: 'Textarea' },
     { name: 'Icons', path: 'icons', label: 'Icons' },
     { name: 'Notification', path: 'notification', label: 'Notification' },
+    { name: 'Theming', path: 'theming', label: 'Theming' },
 ];
 
 @Component({
