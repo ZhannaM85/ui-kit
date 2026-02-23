@@ -10,5 +10,6 @@ export const routes: Routes = [
     { path: 'textarea', loadChildren: () => import('./showcase/textarea-sandbox/textarea-showcase.module').then(m => m.TextareaShowcaseModule) },
     { path: 'icons', loadChildren: () => import('./showcase/icon-sandbox/icon-showcase.module').then(m => m.IconShowcaseModule) },
     { path: 'notification', loadChildren: () => import('./showcase/notification-sandbox/notification-showcase.module').then(m => m.NotificationShowcaseModule) },
+    { path: 'theming', loadChildren: () => import('./showcase/theme-sandbox/theme-showcase.module').then(m => m.ThemeShowcaseModule) },
     { path: '**', redirectTo: 'welcome' },
 ];
