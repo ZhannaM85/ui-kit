@@ -57,13 +57,16 @@
     "typescript-eslint": "8.50.1",
     "zone.js": "~0.15.0"
   },
-  "main": "dist/ui-kit/fesm2022/ui-kit.mjs",
-  "module": "dist/ui-kit/fesm2022/ui-kit.mjs",
-  "types": "dist/ui-kit/index.d.ts",
+  "main": "dist/ui-kit/fesm2022/zhannam85-ui-kit.mjs",
+  "module": "dist/ui-kit/fesm2022/zhannam85-ui-kit.mjs",
+  "types": "dist/ui-kit/types/zhannam85-ui-kit.d.ts",
   "exports": {
     ".": {
-      "esm2022": "./dist/ui-kit/fesm2022/ui-kit.mjs",
-      "esm": "./dist/ui-kit/fesm2022/ui-kit.mjs"
+      "types": "./dist/ui-kit/types/zhannam85-ui-kit.d.ts",
+      "esm2022": "./dist/ui-kit/fesm2022/zhannam85-ui-kit.mjs",
+      "esm": "./dist/ui-kit/fesm2022/zhannam85-ui-kit.mjs",
+      "import": "./dist/ui-kit/fesm2022/zhannam85-ui-kit.mjs",
+      "default": "./dist/ui-kit/fesm2022/zhannam85-ui-kit.mjs"
     }
   },
   "sideEffects": false
