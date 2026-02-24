@@ -84,6 +84,35 @@
   </section>
 
   <section class="showcase-section">
+    <h3>Accessibility Behavior</h3>
+    <p class="showcase-desc">
+      The component wires helper/error text to the control via <code>aria-describedby</code>.
+      When an error is present, it takes priority and <code>aria-invalid</code> is set to <code>true</code>.
+    </p>
+    <div class="row column">
+      <kit-textarea
+        label="A11y: Hint only"
+        placeholder="Hint is announced by screen readers"
+        hint="Describe the issue in 10-200 characters"
+        [rows]="4">
+      </kit-textarea>
+      <kit-textarea
+        label="A11y: Error only"
+        placeholder="Error is announced by screen readers"
+        error="Description is required"
+        [rows]="4">
+      </kit-textarea>
+      <kit-textarea
+        label="A11y: Hint + Error (error wins)"
+        placeholder="Error should be referenced instead of hint"
+        hint="This hint is not referenced while error exists"
+        error="Please provide a valid description"
+        [rows]="4">
+      </kit-textarea>
+    </div>
+  </section>
+
+  <section class="showcase-section">
     <h3>Interactive Example</h3>
     <div class="row column">
       <kit-textarea

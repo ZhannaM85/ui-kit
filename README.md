@@ -121,6 +121,12 @@ Use with Reactive Forms:
 | `blurred` | `EventEmitter<FocusEvent>` | Emitted when the input loses focus |
 | `cleared` | `EventEmitter<void>` | Emitted when the clear button is clicked |
 
+#### Accessibility
+
+- The component links helper text and error text to the native `<input>` with `aria-describedby`.
+- `aria-invalid="true"` is applied when `error` is provided.
+- If both `hint` and `error` are provided, the error message takes precedence for `aria-describedby`.
+
 ---
 
 ### Textarea
@@ -172,6 +178,12 @@ Use with Reactive Forms:
 |-------|------|-------------|
 | `valueChange` | `EventEmitter<string>` | Emitted when the value changes |
 | `blurred` | `EventEmitter<FocusEvent>` | Emitted when the textarea loses focus |
+
+#### Accessibility
+
+- The component links helper text and error text to the native `<textarea>` with `aria-describedby`.
+- `aria-invalid="true"` is applied when `error` is provided.
+- If both `hint` and `error` are provided, the error message takes precedence for `aria-describedby`.
 
 ---
 
