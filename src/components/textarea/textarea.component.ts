@@ -38,6 +38,26 @@ export class TextareaComponent implements ControlValueAccessor {
 
     public textareaId = generateId('kit-textarea', 7);
 
+    public get errorId(): string {
+        return `${this.textareaId}-error`;
+    }
+
+    public get hintId(): string {
+        return `${this.textareaId}-hint`;
+    }
+
+    public get describedById(): string | null {
+        if (this.error) {
+            return this.errorId;
+        }
+
+        if (this.hint) {
+            return this.hintId;
+        }
+
+        return null;
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     private onChange = (_: string): void => {
         // Placeholder - will be replaced by Angular forms via registerOnChange

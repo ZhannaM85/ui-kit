@@ -8,6 +8,8 @@
         class="lib-textarea"
         [class.lib-textarea--error]="error"
         [class.lib-textarea--disabled]="disabled"
+        [attr.aria-describedby]="describedById"
+        [attr.aria-invalid]="error ? 'true' : null"
         [placeholder]="placeholder"
         [value]="value"
         [disabled]="disabled"
@@ -16,6 +18,6 @@
         (input)="onInput($event)"
         (blur)="onBlur($event)"
     ></textarea>
-    <span *ngIf="error" class="lib-textarea-error">{{ error }}</span>
-    <span *ngIf="hint && !error" class="lib-textarea-hint">{{ hint }}</span>
+    <span *ngIf="error" [id]="errorId" class="lib-textarea-error">{{ error }}</span>
+    <span *ngIf="hint && !error" [id]="hintId" class="lib-textarea-hint">{{ hint }}</span>
 </div>
