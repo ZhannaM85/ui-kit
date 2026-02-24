@@ -43,6 +43,26 @@ export class InputComponent implements ControlValueAccessor {
 
     public inputId = generateId('kit-input', 7);
 
+    public get errorId(): string {
+        return `${this.inputId}-error`;
+    }
+
+    public get hintId(): string {
+        return `${this.inputId}-hint`;
+    }
+
+    public get describedById(): string | null {
+        if (this.error) {
+            return this.errorId;
+        }
+
+        if (this.hint) {
+            return this.hintId;
+        }
+
+        return null;
+    }
+
     private onChange = (_: string): void => {
         // Placeholder - will be replaced by Angular forms via registerOnChange
     };

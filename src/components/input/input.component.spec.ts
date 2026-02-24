@@ -131,6 +131,44 @@ describe('InputComponent', () => {
         expect(component.inputId).toMatch(/^kit-input-/);
     });
 
+    it('should link hint text via aria-describedby when hint is present', () => {
+        component.hint = 'Helpful hint';
+        fixture.detectChanges();
+
+        const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
+        const hint: HTMLSpanElement = fixture.nativeElement.querySelector('.lib-input-hint');
+
+        expect(hint.id).toBe(component.hintId);
+        expect(input.getAttribute('aria-describedby')).toBe(component.hintId);
+        expect(input.getAttribute('aria-invalid')).toBeNull();
+    });
+
+    it('should link error text via aria-describedby and set aria-invalid', () => {
+        component.error = 'Invalid value';
+        component.hint = 'Helpful hint';
+        fixture.detectChanges();
+
+        const input: HTMLInputElement = fixture.nativeElement.querySelector('input');
+        const error: HTMLSpanElement = fixture.nativeElement.querySelector('.lib-input-error');
+
+        expect(error.id).toBe(component.errorId);
+        expect(input.getAttribute('aria-describedby')).toBe(component.errorId);
+        expect(input.getAttribute('aria-invalid')).toBe('true');
+        expect(fixture.nativeElement.querySelector('.lib-input-hint')).toBeNull();
+    });
+
+    it('should keep hint and error IDs stable for an instance', () => {
+        const baseId = component.inputId;
+
+        expect(component.hintId).toBe(`${baseId}-hint`);
+        expect(component.errorId).toBe(`${baseId}-error`);
+
+        component.hint = 'Hint';
+        fixture.detectChanges();
+        const hint = fixture.nativeElement.querySelector('.lib-input-hint') as HTMLSpanElement;
+        expect(hint.id).toBe(`${baseId}-hint`);
+    });
+
     it('should register onChange callback and invoke it on input', () => {
         const onChangeSpy = jest.fn();
         component.registerOnChange(onChangeSpy);
