@@ -118,6 +118,44 @@ describe('TextareaComponent', () => {
         expect(component.textareaId).toMatch(/^kit-textarea-/);
     });
 
+    it('should link hint text via aria-describedby when hint is present', () => {
+        component.hint = 'Helpful hint';
+        fixture.detectChanges();
+
+        const textarea: HTMLTextAreaElement = fixture.nativeElement.querySelector('textarea');
+        const hint: HTMLSpanElement = fixture.nativeElement.querySelector('.lib-textarea-hint');
+
+        expect(hint.id).toBe(component.hintId);
+        expect(textarea.getAttribute('aria-describedby')).toBe(component.hintId);
+        expect(textarea.getAttribute('aria-invalid')).toBeNull();
+    });
+
+    it('should link error text via aria-describedby and set aria-invalid', () => {
+        component.error = 'Invalid value';
+        component.hint = 'Helpful hint';
+        fixture.detectChanges();
+
+        const textarea: HTMLTextAreaElement = fixture.nativeElement.querySelector('textarea');
+        const error: HTMLSpanElement = fixture.nativeElement.querySelector('.lib-textarea-error');
+
+        expect(error.id).toBe(component.errorId);
+        expect(textarea.getAttribute('aria-describedby')).toBe(component.errorId);
+        expect(textarea.getAttribute('aria-invalid')).toBe('true');
+        expect(fixture.nativeElement.querySelector('.lib-textarea-hint')).toBeNull();
+    });
+
+    it('should keep hint and error IDs stable for an instance', () => {
+        const baseId = component.textareaId;
+
+        expect(component.hintId).toBe(`${baseId}-hint`);
+        expect(component.errorId).toBe(`${baseId}-error`);
+
+        component.hint = 'Hint';
+        fixture.detectChanges();
+        const hint = fixture.nativeElement.querySelector('.lib-textarea-hint') as HTMLSpanElement;
+        expect(hint.id).toBe(`${baseId}-hint`);
+    });
+
     it('should register onChange callback and invoke it on input', () => {
         const onChangeSpy = jest.fn();
         component.registerOnChange(onChangeSpy);
