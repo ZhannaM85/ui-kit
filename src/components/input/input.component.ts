@@ -71,6 +71,11 @@ export class InputComponent implements ControlValueAccessor {
         // Placeholder - will be replaced by Angular forms via registerOnTouched
     };
 
+    /**
+     * Handles native input updates and propagates value changes.
+     *
+     * @param event Native input event.
+     */
     public onInput(event: Event): void {
         const input = event.target as HTMLInputElement;
         this.value = input.value;
@@ -78,11 +83,19 @@ export class InputComponent implements ControlValueAccessor {
         this.valueChange.emit(this.value);
     }
 
+    /**
+     * Marks the control as touched and emits blur event.
+     *
+     * @param event Native focus event.
+     */
     public onBlur(event: FocusEvent): void {
         this.onTouched();
         this.blurred.emit(event);
     }
 
+    /**
+     * Clears the current value and emits clear/change events.
+     */
     public clearValue(): void {
         this.value = '';
         this.onChange(this.value);
@@ -91,18 +104,38 @@ export class InputComponent implements ControlValueAccessor {
     }
 
     // ControlValueAccessor implementation
+    /**
+     * Writes an external form value into the input.
+     *
+     * @param value Value supplied by Angular forms.
+     */
     public writeValue(value: string): void {
         this.value = value ?? '';
     }
 
+    /**
+     * Registers callback for model updates.
+     *
+     * @param fn Change callback from Angular forms.
+     */
     public registerOnChange(fn: (value: string) => void): void {
         this.onChange = fn;
     }
 
+    /**
+     * Registers callback for touched state.
+     *
+     * @param fn Touch callback from Angular forms.
+     */
     public registerOnTouched(fn: () => void): void {
         this.onTouched = fn;
     }
 
+    /**
+     * Updates disabled state from Angular forms.
+     *
+     * @param isDisabled Whether control should be disabled.
+     */
     public setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
     }

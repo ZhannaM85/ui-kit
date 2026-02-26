@@ -21,6 +21,11 @@ export class CheckboxComponent {
   /** Stable id for the input (generated once per component instance to avoid NG0100). */
   public readonly checkboxId = generateId('kit-checkbox');
 
+  /**
+   * Handles native checkbox change and emits the updated checked state.
+   *
+   * @param event Native change event from checkbox input.
+   */
   public onCheckboxChange(event: Event): void {
       if (!this.disabled) {
           const target = event.target as HTMLInputElement;
