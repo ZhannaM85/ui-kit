@@ -19,6 +19,11 @@ export class ButtonComponent {
 
   @Output() public buttonClicked = new EventEmitter<MouseEvent>();
 
+  /**
+   * Emits click events when the button is enabled.
+   *
+   * @param event Native mouse click event.
+   */
   public onClick(event: MouseEvent): void {
       if (!this.disabled) {
           this.buttonClicked.emit(event);

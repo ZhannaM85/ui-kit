@@ -52,27 +52,47 @@ export class DropdownComponent implements OnInit, OnDestroy {
 
     public selectedOption: DropdownOption | null = null;
 
+    /**
+     * Initializes selected option and subscribes to outside-click close behavior.
+     */
     constructor(private elementRef: ElementRef) {}
 
+    /**
+     * Syncs selected option and binds document click listener.
+     */
     public ngOnInit(): void {
         this.updateSelectedOption();
         document.addEventListener('click', this.onDocumentClick);
     }
 
+    /**
+     * Removes document click listener when component is destroyed.
+     */
     public ngOnDestroy(): void {
         document.removeEventListener('click', this.onDocumentClick);
     }
 
+    /**
+     * Resolves the selected option from current value and options list.
+     */
     private updateSelectedOption(): void {
         this.selectedOption = findSelectedOption(this._options, this._selectedValue);
     }
 
+    /**
+     * Toggles the dropdown panel open/closed when enabled.
+     */
     public toggleDropdown(): void {
         if (!this.disabled) {
             this.isOpen = !this.isOpen;
         }
     }
 
+    /**
+     * Handles keyboard activation on the trigger element.
+     *
+     * @param event Trigger keyboard event.
+     */
     public onTriggerKeydown(event: KeyboardEvent): void {
         if (isActivationKey(event.key)) {
             event.preventDefault();
@@ -80,6 +100,12 @@ export class DropdownComponent implements OnInit, OnDestroy {
         }
     }
 
+    /**
+     * Handles keyboard selection for a focused option.
+     *
+     * @param event Option keyboard event.
+     * @param option Option associated with the focused element.
+     */
     public onOptionKeydown(event: KeyboardEvent, option: DropdownOption): void {
         if (isActivationKey(event.key)) {
             event.preventDefault();
@@ -87,6 +113,11 @@ export class DropdownComponent implements OnInit, OnDestroy {
         }
     }
 
+    /**
+     * Selects an option, emits its value, and closes the dropdown.
+     *
+     * @param option Option to select.
+     */
     public selectOption(option: DropdownOption): void {
         if (!this.disabled) {
             this.selectedOption = option;
