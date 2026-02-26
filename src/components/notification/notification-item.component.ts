@@ -12,11 +12,17 @@ export class NotificationItemComponent {
 
     @Output() public dismissed = new EventEmitter<string>();
 
+    /**
+     * Executes optional action callback and dismisses the notification.
+     */
     public onAction(): void {
         this.notification.actionCallback?.();
         this.dismissed.emit(this.notification.id);
     }
 
+    /**
+     * Dismisses the notification without running an action callback.
+     */
     public onDismiss(): void {
         this.dismissed.emit(this.notification.id);
     }

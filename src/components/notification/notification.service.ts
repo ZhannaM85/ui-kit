@@ -17,6 +17,13 @@ export class NotificationService {
 
     public notifications$: Observable<KitNotification[]> = this.notificationsSubject.asObservable();
 
+    /**
+     * Adds a notification and schedules auto-dismiss when duration is positive.
+     *
+     * @param message Notification message text.
+     * @param type Notification visual type.
+     * @param options Optional duration and action metadata.
+     */
     public show(message: string, type: NotificationType, options?: NotificationOptions): void {
         const duration = resolveDuration(options);
         const id = generateNotificationId(++this.counter);
@@ -45,24 +52,52 @@ export class NotificationService {
         }
     }
 
+    /**
+     * Shows a success notification.
+     *
+     * @param message Notification message text.
+     * @param options Optional duration and action metadata.
+     */
     public success(message: string, options?: NotificationOptions): void {
         this.show(message, 'success', options);
     }
 
+    /**
+     * Shows a warning notification.
+     *
+     * @param message Notification message text.
+     * @param options Optional duration and action metadata.
+     */
     public warning(message: string, options?: NotificationOptions): void {
         this.show(message, 'warning', options);
     }
 
+    /**
+     * Shows an error notification.
+     *
+     * @param message Notification message text.
+     * @param options Optional duration and action metadata.
+     */
     public error(message: string, options?: NotificationOptions): void {
         this.show(message, 'error', options);
     }
 
+    /**
+     * Dismisses a notification by id and clears its timer.
+     *
+     * @param id Notification identifier.
+     */
     public dismiss(id: string): void {
         this.clearTimer(id);
         this.notifications = this.notifications.filter((n) => n.id !== id);
         this.notificationsSubject.next(this.notifications);
     }
 
+    /**
+     * Clears and removes a scheduled auto-dismiss timer.
+     *
+     * @param id Notification identifier.
+     */
     private clearTimer(id: string): void {
         const timer = this.timers.get(id);
         if (timer) {
